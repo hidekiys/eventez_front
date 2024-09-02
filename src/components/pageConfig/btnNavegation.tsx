@@ -13,16 +13,13 @@ export const BtnNavigation = (props: Props) => {
 
     //definição dos caminhos dos botões
     if(props.local == "Inicio"){button="/user/home"}
-    if(props.local == "Orçamento"){button="/user/orcamento"}
-    if(props.local == "Financeiro"){button="/user/financeiro"}
     if(props.local == "Perfil"){button="/user/perfil"}
     if(props.local == "Suporte"){button="/user/suporte"}
 
 
     //definição do CSS dos botões
-    if (pathName == "/user/home" && props.local == "Inicio" ||
-     pathName.startsWith("/user/perfil") && props.local == "Perfil" ||
-     pathName.startsWith("/user/suporte") && props.local == "Suporte"
+    if (pathName == "/user/home" && props.local == "Inicio" || pathName == "/user/perfil" && props.local == "Perfil" ||
+        pathName == "/user/suporte" && props.local == "Suporte"
     ){
         selected = "h-15 flex text-md justify-left flex-row p-5 bg-gray-300 text-gray-500";
         

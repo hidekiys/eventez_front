@@ -3,8 +3,6 @@ import { usePathname } from "next/navigation";
 
 
 import { Home } from "@/pages/user/home/home";
-import { Budgets } from "@/pages/user/orcamento/components/budgets";
-import { Financial } from "@/pages/user/financeiro/components/financial";
 import { Profile } from "@/pages/user/perfil/components/profile";
 import { Support } from "@/pages/user/suporte/components/Support";
 import { EventContent } from "@/pages/user/eventos/[event]/components/EventContent";
@@ -13,7 +11,7 @@ import { EventContent } from "@/pages/user/eventos/[event]/components/EventConte
 
 
 // Conteúdo da página
-export const Content = () => {
+const Content = () => {
     const pathName = usePathname(); // Caminho da url
 
     //Definir a pagina que está contida
@@ -22,12 +20,11 @@ export const Content = () => {
         content = <Home/>;
     }else if(pathName == "/user/perfil"){
         content = <Profile/>;
-    }else if(pathName.startsWith("/user/suporte")){
+    }else if(pathName == "/user/suporte"){
         content = <Support/>;
-    }else if(pathName.startsWith("/user/eventos")){
-        content = <EventContent/>;
+
     }else{
-        content = <div className="text-center text-lg">404 Página não encontrada</div>;
+        content = <div className="text-center text-lg">404 Página não encontradaa</div>;
     }
 
     //Retorna a página
@@ -43,3 +40,5 @@ export const Content = () => {
         </div>
     );
 }
+
+export default Content;
