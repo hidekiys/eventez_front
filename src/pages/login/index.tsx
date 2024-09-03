@@ -9,12 +9,14 @@ import { LoginHeader } from "./components/LoginHeader";
 import { FormLogin } from "@/types/FormLogin";
 import { api } from "@/utils/api";
 import { UserContext } from "@/contexts/UserContext";
+import { PartnerContext } from "@/contexts/PartnerContext";
 
 
 
 function Page() {
 
     const { user, setUser } = useContext(UserContext)
+    const { partner, setPartner } = useContext(PartnerContext)
 
 
 
@@ -35,23 +37,40 @@ function Page() {
             }).then((response) => {
                 const { token } = response.data
     
-                setCookie(undefined, 'eventez.token', token, {
-                    maxAge: 60 * 60 // 1 hour
-                })
-                console.log(response.data)
+                
+                
 
                 api.defaults.headers['Authorization'] = `Bearer ${token}`
+                const role = response.data.role
+                console.log(role)
+                if (role === "user"){
+                    setCookie(undefined, 'eventez.user.token', token, {
+                        maxAge: 60 * 60 // 1 hour
+                    })
+                    setUser({
+                        name:{
+                            firstName: response.data.firstName,
+                            lastName: response.data.lastName
+                        },
+                        id: response.data.id,
+                        email: response.data.email,
+                        url_avatar: response.data.url_avatar
+                    })
+                    Router.push("/user/home")
+                }else if(role === "partner"){
+                    setCookie(undefined, 'eventez.partner.token', token, {
+                        maxAge: 60 * 60 // 1 hour
+                    })
+                    setPartner({
+                        name:response.data.name,
+                        id: response.data.id,
+                        email: response.data.email,
+                        url_avatar: response.data.url_avatar
+                    })                            
+                    Router.push("/partner/home")
+                }
 
-                setUser({
-                    name:{
-                        firstName: response.data.firstName,
-                        lastName: response.data.lastName
-                    },
-                    id: response.data.id,
-                    email: response.data.email,
-                    url_avatar: response.data.url_avatar
-                })
-                Router.push("/user/home")
+
             }).catch((error) => {
                 if(error.response.data){
                     setStatus(error.response.data)

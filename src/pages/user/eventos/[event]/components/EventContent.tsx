@@ -45,7 +45,6 @@ export const EventContent = () => {
       })
       .catch(err => {console.log(err)
         if(err.response.status == 404){
-          setNotFound(true);
         }
       })
     })

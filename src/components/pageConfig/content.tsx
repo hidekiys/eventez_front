@@ -6,32 +6,37 @@ import { Home } from "@/pages/user/home/home";
 import { Profile } from "@/pages/user/perfil/components/profile";
 import { Support } from "@/pages/user/suporte/components/Support";
 import { EventContent } from "@/pages/user/eventos/[event]/components/EventContent";
+import { PartnerHome } from "@/pages/partner/home/components/PartnerHome";
+import { PartnerFinancial } from "@/pages/partner/financeiro/components/PartnerFinancial";
+import { PartnerEventContent } from "@/pages/partner/evento/components/PartnerEventContent";
+import { PartnerProfile } from "@/pages/partner/perfil/components/PartnerProfile";
 
 
 
 
 // Conteúdo da página
 const Content = () => {
-    const pathName = usePathname(); // Caminho da url
+     // Caminho da url
 
-    //Definir a pagina que está contida
-    let content: JSX.Element;
-    if (pathName == "/user/home"){
-        content = <Home/>;
-    }else if(pathName == "/user/perfil"){
-        content = <Profile/>;
-    }else if(pathName == "/user/suporte"){
-        content = <Support/>;
-
-    }else{
-        content = <div className="text-center text-lg">404 Página não encontradaa</div>;
-    }
+    const contents = new Map<string, JSX.Element>(Object.entries({
+        "/user/home": <Home/>,
+        "/user/perfil": <Profile/>,
+        "/user/suporte": <Support/>,
+        "/partner/home":<PartnerHome/>,
+        "/partner/financeiro":<PartnerFinancial/>,
+        "/partner/perfil":<PartnerProfile/>,
+        "/partner/evento":<PartnerEventContent/>
+      }));
+      const pathName = usePathname();
+      
+      const content = contents.get(pathName) ?? null
+    
 
     //Retorna a página
     return(
         <div className="h-full grid grid-cols-8">
             <div className="col-span-1 z-20 absolute h-[calc(100vh-2.5rem)]">
-                <Navegation/>
+                <Navegation/> 
             </div>
             <div className="col-span-8 ml-14 text-gray-700 z-0">
                 {content}

@@ -44,7 +44,7 @@ export default function UserProvider({children} : UserProviderProps){
 
 
     useEffect(() => {
-        const { 'eventez.token': token } = parseCookies()
+        const { 'eventez.user.token': token } = parseCookies()
         
         if(token) {
             api.get('/getUser').then(response => { setUser({
