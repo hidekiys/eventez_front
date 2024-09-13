@@ -10,6 +10,7 @@ import { PartnerHome } from "@/pages/partner/home/components/PartnerHome";
 import { PartnerFinancial } from "@/pages/partner/financeiro/components/PartnerFinancial";
 import { PartnerEventContent } from "@/pages/partner/evento/components/PartnerEventContent";
 import { PartnerProfile } from "@/pages/partner/perfil/components/PartnerProfile";
+import { ChatContent } from "@/pages/user/chat/[userB]/Chat";
 
 
 

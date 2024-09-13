@@ -1,0 +1,20 @@
+export type ChatType = {
+    userA:{
+        name:string,
+        identificator:string
+    }
+    userB:{
+        name:string,
+        identificator:string
+    },
+    messages:[{
+        owner:{
+            name:string,
+            identificator:string
+        },
+        message:string,
+        date:string,
+        hour:string
+    }
+    ]
+}

@@ -18,7 +18,7 @@ export const EventCard = (props: Props) => {
                     </div>
                     <div className="flex flex-col text-center mt-1">
                         <p>{props.name}</p>
-                        <p>{`${props.date.slice(8, 10)}/${props.date.slice(5,7)}/${props.date.slice(0,4)}`}</p>
+                        <p>{`${props.date?.slice(8, 10)}/${props.date?.slice(5,7)}/${props.date?.slice(0,4)}`}</p>
                     </div>
                 </div>
             </div>

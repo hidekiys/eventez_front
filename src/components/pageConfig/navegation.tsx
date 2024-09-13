@@ -9,7 +9,6 @@ export const Navegation = () => {
     const [role, setRole] = useState(false);
 
     useEffect(() => {
-        console.log(role)
         if(userToken){
             setRole(false)
         }else if(partnerToken){
