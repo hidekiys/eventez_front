@@ -41,7 +41,9 @@ export default function PartnerProvider({children} : PartnerProviderProps){
         const { 'eventez.partner.token': token } = parseCookies()
         
         if(token) {
-            api.get('/getPartner').then(response => { setPartner({
+            api.get('/getPartner').then(response => { 
+                console.log(response)
+                setPartner({
                 name: response.data.name,
                 id: response.data.id,
                 email: response.data.email,

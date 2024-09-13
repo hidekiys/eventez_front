@@ -16,6 +16,9 @@ type Props = {
     types: string[],
     setNotFound: Dispatch<SetStateAction<boolean>>
 }
+
+
+
 export const EventName = ({eventName, types, setNotFound}:Props) => {
     const [open, setOpen] = useState(false);
 
@@ -26,7 +29,7 @@ export const EventName = ({eventName, types, setNotFound}:Props) => {
         <div className="text-2xl flex flex-col font-normal max-w-52 mt-0 ml-10">
         
         <Sheet>
-            <SheetTrigger><h1 className="text-principal-300 max-w-96" >{eventName}</h1></SheetTrigger>
+            <SheetTrigger><h1 className="text-principal-300 max-w-96 text-left text-nowrap" >{eventName}</h1></SheetTrigger>
             <SheetContent>
                 <SheetHeader>
                 <SheetTitle>{eventName}</SheetTitle>

@@ -12,14 +12,58 @@ import { Budgets } from "./Budgets";
 import { publicOfEvent } from "@/pages/user/home/event/publicOfEvent";
 
 
-export const EventContent = () => {
-    const router = useRouter()
-    const [notFound, setNotFound] = useState(false)
-    const [event, setEvent] = useState({name: '',
-      types: [''],
-      publicOfEvent: [''],
+
+type eventType = {
+  name: string,
+      types: [string],
+      publicOfEvent: [string],
       place: {
-          placeName: '',
+          placeName: string,
+          cep: string,
+          street: string,
+          neighborhood: string,
+          state: string,
+          city: string,
+          number: string,
+          complement:string
+      },
+      hour: string,
+      endTime: string,
+      date:string,
+      numberOfGuests: number,
+      parcialValue: number,
+      services: [{
+        partnerId:string,
+        description:string,
+        services:[string],
+        value:number,
+
+      }],
+      description:string,
+      todoList:[{todoItem:number,todoStatus:boolean, todoDescription:string}],
+      budgets:[{
+        budgetItem:number,
+        date:string,
+        description:string,
+        partnerId:string,
+        services:[string],
+        status:string,
+        value:number,
+      }]
+}
+
+const templateBudgets = [{
+  budgetItem:0,
+  date:'',
+  description:'',
+  partnerId:'',
+  services:[''],
+  status:'',
+  value:0,
+}]
+
+const templatePlace = {
+  placeName: '',
           cep: '',
           street: '',
           neighborhood: '',
@@ -27,16 +71,14 @@ export const EventContent = () => {
           city: '',
           number: '',
           complement:''
-      },
-      hour: '',
-      endTime: '',
-      date:'',
-      numberOfGuests: 0,
-      parcialValue: 0,
-      services: [''],
-      description:'',
-      todoList:[{todoItem:0,todoStatus:false, todoDescription:''}]
-  });
+}
+
+const templateTodoList = [{todoItem:0,todoStatus:false, todoDescription:''}]
+
+export const EventContent = () => {
+    const router = useRouter()
+    const [notFound, setNotFound] = useState(false)
+    const [event, setEvent] = useState<eventType>();
 
     
     useEffect(() => {
@@ -47,7 +89,7 @@ export const EventContent = () => {
         if(err.response.status == 404){
         }
       })
-    })
+    }, [[], api])
 
 
     return (
@@ -60,11 +102,12 @@ export const EventContent = () => {
       
       
       }
-      {!notFound && <>
+      {!notFound && event &&
+       <>
         <div className="h-[calc(100vh-3.5rem)] flex flex-col">
             
             <div className="mt-3 flex justify-between">
-                <EventName setNotFound={setNotFound} eventName={event.name} types={event.types}/>
+                <EventName setNotFound={setNotFound} eventName={event?.name || ''} types={event?.types || ['']}/>
 
             </div>
 
@@ -73,20 +116,20 @@ export const EventContent = () => {
                 <div className="w-[calc(48%)] flex flex-col">
                 <h1 className="text-2xl">Serviços</h1>
                 <div className="flex flex-col h-full justify-between">
-                  <div className="h-3/5">
-                  <EventServices/>
+                  <div className="h-3/6">
+                  <EventServices services={event?.services}/>
                   
                   </div>
-                  <div className="h-2/5">
-                    <Budgets/>
+                  <div className="h-3/6">
+                    <Budgets budgets={event?.budgets}/>
                   </div>
                   </div>
                 </div>
               <div className="w-1/2 flex flex-col mt-4">
-                  <SumaryEvent numberOfGuests={event.numberOfGuests} startTime={event.hour} endTime={event.endTime} date={event.date}/>
-                    <Address place={event.place} id={router.query.event as string}/>
+                  <SumaryEvent numberOfGuests={event?.numberOfGuests || 0} startTime={event?.hour || ''} endTime={event?.endTime || ''} date={event?.date ||''}/>
+                    <Address place={event?.place || templatePlace} id={router.query.event as string}/>
                     <EventFinancial/>
-                    <EventTodoList todoList={event.todoList}/>
+                    <EventTodoList todoList={event?.todoList || templateTodoList}/>
 
                   </div>
 

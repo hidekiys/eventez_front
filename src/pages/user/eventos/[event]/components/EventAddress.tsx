@@ -32,7 +32,7 @@ type Props = {
         city: string,
         number: string,
         complement:string
-    },
+    } ,
     id:string
 }
 
