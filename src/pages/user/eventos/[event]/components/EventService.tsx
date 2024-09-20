@@ -1,5 +1,6 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription, DialogClose } from "@/components/ui/dialog"
 import { api } from "@/utils/api"
+import Link from "next/link"
 import { useEffect, useState } from "react"
 
 
@@ -58,9 +59,19 @@ export const EventService = ({service}:Props) => {
                                 <button className="w-full py-2 rounded-lg border hover:bg-gray-200 hover:transition-all">
                                     Termos de contrato
                                 </button>
+                                <Link href={{
+                                    pathname:`/user/chat/`,
+                                    query:{
+                                        chat:service.partnerId,
+                                        chatName:partner
+                                    }
+
+
+                                }}>
                                 <button className="w-full py-2 rounded-lg bg-principal-200 text-white hover:bg-principal-300 hover:transition-all">
                                     Chat
                                 </button>
+                                </Link>
                             </div>
                         </div>
                         <DialogClose asChild>

@@ -39,6 +39,7 @@ export const Budgets = () => {
             setSendedBudgets(sendedBudget)
         })
     },[])
+    
     useEffect(() => {
         
         let timerId = setInterval(() => {

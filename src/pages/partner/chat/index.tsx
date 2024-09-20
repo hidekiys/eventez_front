@@ -1,9 +1,15 @@
 import { Header } from "@/components/pageConfig/header";
 import { Navegation } from "@/components/pageConfig/navegation";
-import { PageConfig } from "@/components/pageConfig/pageConfig";
-import { ChatContent } from "./Chat";
+import { ChatContent } from "@/components/Chat";
+import { useRouter } from "next/router";
+import { PartnerContext } from "@/contexts/PartnerContext";
+import { useContext } from "react";
+
 
 function Page() {
+    const router = useRouter()
+    const { chat, chatName } = router.query
+    const { partner } = useContext(PartnerContext);
     return (
       <div className="h-screen">
             <Header/>
@@ -13,7 +19,7 @@ function Page() {
                 <Navegation/>
             </div>
             <div className="col-span-8 ml-14 text-gray-700 z-0">
-            <ChatContent/>
+            <ChatContent chat={chat} chatName={chatName} userid={partner.id}/>
             </div>    
 
         </div>

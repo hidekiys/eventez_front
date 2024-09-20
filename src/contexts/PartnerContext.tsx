@@ -42,7 +42,7 @@ export default function PartnerProvider({children} : PartnerProviderProps){
         
         if(token) {
             api.get('/getPartner').then(response => { 
-                console.log(response)
+
                 setPartner({
                 name: response.data.name,
                 id: response.data.id,

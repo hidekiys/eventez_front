@@ -1,6 +1,7 @@
 export type EventSummary = {
     numberOfGuests: number,
             publicOfEvent: [string],
+            ownerId:string,
             date:string,
             types:[string],
             name:string,

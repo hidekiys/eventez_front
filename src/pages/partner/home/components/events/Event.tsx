@@ -11,6 +11,7 @@ import {
     DialogTitle,
     DialogTrigger,
   } from "@/components/ui/dialog"
+import Link from "next/link";
 
 type Props = {
     event:{
@@ -96,6 +97,21 @@ export const Event = ({event}:Props) => {
                         <div className="p-2 max-h-[40vh] overflow-auto flex rounded-md bg-white mt-3">
                             {event.description}
                         </div>
+                        <Link href={
+                            {
+                            pathname:`/partner/chat/`,
+                            query:{
+                                chat:summaryEvent?.ownerId,
+                                chatName:summaryEvent?.owner
+                            }
+                        }
+                        }
+                        
+                        >
+                                <button className="mt-2 w-full py-2 rounded-lg bg-principal-200 text-white hover:bg-principal-300 hover:transition-all">
+                                    Chat
+                                </button>
+                            </Link>
 
 
                         <div className="flex flex-col mt-3 h-full">
