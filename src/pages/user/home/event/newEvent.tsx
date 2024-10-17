@@ -20,6 +20,7 @@ import { SelectType } from "./Select";
 import { SelectPublic } from "./SelectPublic";
 import { EndTimePicker } from "./endTimePicker";
 import Router from "next/router";
+import React from "react";
 
 
   
@@ -228,7 +229,7 @@ export const NewEvent = () => {
         <>
             
             <Dialog onOpenChange={handleClose}>
-            <DialogTrigger><img className="h-12 w-12 mt-20 hover:cursor-pointer hover:scale-110 transition-all" src="/add.png" /></DialogTrigger>
+            <DialogTrigger>Adicionar novo evento</DialogTrigger>
             <DialogContent>
                 <DialogHeader>
                 <DialogTitle>Criar novo evento</DialogTitle>

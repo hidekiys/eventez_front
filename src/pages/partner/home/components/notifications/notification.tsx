@@ -1,18 +1,23 @@
 
-import { CheckCheck, CircleDollarSign, MessageCircle } from "lucide-react"
+import { CheckCheck, CircleDollarSign, Mails, MessageCircle } from "lucide-react"
 
 
 
 
 type Props = {
-    event: string,
-    sender: string,
-    type: string,
-    hour: string,
-    description:string
+    data:{
+    event: string[],
+    users: {
+        sender: string,
+        receiver: string,
+    },
+    notificationType: string,
+    sender:string[],
+    updatedAt:string
+}
 }
 
-export const Notification = ({event, sender, type, hour, description}: Props) => {
+export const Notification = ({data}: Props) => {
 
     
 
@@ -23,32 +28,35 @@ export const Notification = ({event, sender, type, hour, description}: Props) =>
                 <div className="flex justify-between items-center h-full">
                         
                     <div className="flex items-center">
-                    {type == "chat" &&
+                    {data.notificationType == "chat" &&
                         <MessageCircle size={26} strokeWidth={0.75} className="ml-3"/>
                     }
-                    {type == "financial" &&
+                    {data.notificationType == "financial" &&
                         <CircleDollarSign size={26} strokeWidth={0.75} className="ml-3"/>
                     }
-                    {type == "accept" &&
+                    {data.notificationType == "contract" &&
                         <CheckCheck size={26} strokeWidth={0.75} className="ml-3"/>
+                    }
+                    {data.notificationType == "budget" &&
+                        <Mails size={26} strokeWidth={0.75} className="ml-3"/>
                     }
                     <div className="flex flex-col justify-center ml-2">
                         <h1 className="text-sm">
-                            {sender}
+                            {data.sender[1]}
                         </h1>
                         <p className="text-xs">
-                            {event}
+                            {data.event}
                         </p>
                     </div>
                     </div>
 
                         <p className="flex justify-center align-middle items-center">
-                        {description}
+                        Mandou uma mensagem
                     </p>
                     
                     
                     <p className="mr-3 flex justify-center align-middle items-center">
-                        {hour}
+                        {data.updatedAt.slice(11,13)}:{data.updatedAt.slice(14,16)}
                     </p>
 
 

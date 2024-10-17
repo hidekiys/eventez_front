@@ -5,12 +5,9 @@ import { usePathname } from "next/navigation";
 import { Home } from "@/pages/user/home/home";
 import { Profile } from "@/pages/user/perfil/components/profile";
 import { Support } from "@/pages/user/suporte/components/Support";
-import { EventContent } from "@/pages/user/eventos/[event]/components/EventContent";
 import { PartnerHome } from "@/pages/partner/home/components/PartnerHome";
 import { PartnerFinancial } from "@/pages/partner/financeiro/components/PartnerFinancial";
-import { PartnerEventContent } from "@/pages/partner/evento/components/PartnerEventContent";
-import { PartnerProfile } from "@/pages/partner/perfil/components/PartnerProfile";
-import { ChatContent } from "@/pages/user/chat/[userB]/Chat";
+import { Profile as PartnerProfile } from "@/pages/partner/perfil/components/profile"; 
 
 
 
@@ -26,7 +23,6 @@ const Content = () => {
         "/partner/home":<PartnerHome/>,
         "/partner/financeiro":<PartnerFinancial/>,
         "/partner/perfil":<PartnerProfile/>,
-        "/partner/evento":<PartnerEventContent/>
       }));
       const pathName = usePathname();
       

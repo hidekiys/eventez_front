@@ -3,6 +3,7 @@ import { ComboboxDemo } from "./ComboTypes";
 import { Badge } from "@/components/ui/badge";
 import { LucideX } from "lucide-react";
 import { EventsType } from "@/types/EventsType";
+import React from "react";
 
 type Props = {
     event: EventsType,

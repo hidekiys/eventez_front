@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useForm } from 'react-hook-form';
 import { useContext, useEffect, useState } from "react";
 import { setCookie } from "nookies";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 
 import { About } from "@/components/firstPage/About";
 import { LoginHeader } from "./components/LoginHeader";
@@ -14,13 +14,20 @@ import { PartnerContext } from "@/contexts/PartnerContext";
 
 
 function Page() {
-
+    const router = useRouter()
     const { user, setUser } = useContext(UserContext)
     const { partner, setPartner } = useContext(PartnerContext)
+    const [profile, setProfile] = useState<string | string[] | undefined>()
 
 
+    useEffect(()=>{
+        if(router.isReady){
+            const { perfil } = router.query
+            setProfile(perfil)
+        }
 
 
+    },[router.isReady])
     const { register, handleSubmit } = useForm<FormLogin>()
     
     const [status, setStatus] = useState<string | null>(null)
@@ -56,7 +63,8 @@ function Page() {
                         email: response.data.email,
                         url_avatar: response.data.url_avatar
                     })
-                    Router.push("/user/home")
+                    if(profile) {Router.push(`/perfil/${profile}`)}else{Router.push("/user/home")}
+                    
                 }else if(role === "partner"){
                     setCookie(undefined, 'eventez.partner.token', token, {
                         maxAge: 60 * 60 // 1 hour
@@ -72,7 +80,7 @@ function Page() {
 
 
             }).catch((error) => {
-                if(error.response.data){
+                if(error.response != undefined){
                     setStatus(error.response.data)
                 }else{
                     console.log(error)

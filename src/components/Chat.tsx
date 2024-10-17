@@ -54,6 +54,10 @@ export const ChatContent = ({chat,chatName, userid}:Props) =>{
     },[router.isReady])
 
     useEffect(()=>{
+        api.get('/getAllChats').then((response)=>{
+            console.log(response.data)
+            setContact(response.data)
+        })
         if(currentChat.id != '' && userid != ''){
             api.get(`/getAllMessages/${currentChat.id}`).then((response)=>{
                 setMessages(response.data)
@@ -122,7 +126,7 @@ export const ChatContent = ({chat,chatName, userid}:Props) =>{
         
             <div className="flex h-[90vh] justify-between flex-col w-9/12">
             {messages &&
-                <div className="flex flex-col max-w-8/12 overflow-y-auto scroll-smooth gap-2 py-2 mr-10" ref={messagesEndRef}>
+                <div className="flex flex-col max-w-8/12 overflow-y-auto overflow-x-hidden scroll-smooth gap-2 py-2 mr-10" ref={messagesEndRef}>
                     {messages && messages.map((key,index)=>(
                         <>
                         
@@ -161,14 +165,21 @@ export const ChatContent = ({chat,chatName, userid}:Props) =>{
             </div>
             <div className="w-3/12  mr-10">
                 <h1 className="flex justify-center rounded-t-xl bg-white px-3 py-1">Conversas</h1>
-                <div className=" bg-gray-200 rounded-b-xl min-h-[30vh] flex flex-col items-center">
+                <div className=" bg-gray-200 rounded-b-xl min-h-[30vh] ">
                     {contacts && contacts.map((key,index)=>(
-                        currentChat.id == key.id &&
-                        <div className="w-full mx-2 rounded-lg bg-gray-200" key={index}>
+                        <div className="flex flex-col items-center">
+                        {currentChat.id == key.id &&
+                        <div className="w-[95%] h-9 flex items-center mt-2 px-3 rounded-xl bg-gray-300 " key={index}>
                             {key.name}
-                        </div>
                             
-                        
+                        </div>}
+                        {currentChat.id != key.id &&
+                            <div className="w-[95%] h-9 px-3 flex mt-2 items-center rounded-xl bg-gray-50 hover:bg-principal-300 hover:text-white transition-all" key={index}>
+                                <button onClick={()=>setCurrentChat({name:key.name, id:key.id})}>{key.name}</button>
+                                
+                            </div>}
+                                
+                            </div>
                     ))}
                     
                 </div>

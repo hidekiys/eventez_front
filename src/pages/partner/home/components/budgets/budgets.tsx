@@ -79,7 +79,7 @@ export const Budgets = () => {
                 </label>
             </div>
         </div>
-        <div className="ml-10 w-full mt-5 h-[50vh-20rem]">
+        <div className="ml-10 w-full min-h-[50%] mt-5 h-[50vh-20rem]">
             <div className="grid grid-cols-8 min-w-28 max-w-2xl">
                     <p className="col-span-1">Data</p>
                     <p className="col-span-3">Evento</p>

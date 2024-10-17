@@ -24,6 +24,7 @@ import { useContext, useEffect, useState } from "react";
 import { api } from "@/utils/api";
 import { UserContext } from "@/contexts/UserContext";
 import { FullName } from "@/types/FullName";
+import React from "react";
 
 
 export const EditProfile = () => {

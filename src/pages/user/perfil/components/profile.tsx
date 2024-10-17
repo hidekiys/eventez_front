@@ -3,6 +3,7 @@ import {Address} from "./address"
 
 import { EditProfile } from "../EditProfile";
 import { LoginAndSecurity } from "./LoginAndSecurity";
+import { LogOut } from "./LogOut";
 
 export const Profile = () =>{
 
@@ -16,6 +17,7 @@ export const Profile = () =>{
                 <EditProfile/>
                 <Address/>
                 <LoginAndSecurity/>
+                <LogOut/>
             </div>
         </>
     );

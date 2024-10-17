@@ -16,6 +16,7 @@ import { publicOfEvent } from "@/pages/user/home/event/publicOfEvent";
 type eventType = {
   name: string,
       types: [string],
+      status:string,
       publicOfEvent: [string],
       place: {
           placeName: string,

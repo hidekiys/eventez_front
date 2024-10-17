@@ -21,8 +21,10 @@ export const Budget = ({budget}:Props) => {
 
     const [step, setStep] = useState(0)
     const router = useRouter()
+    const[qrCode, setQrCode] = useState("")
+    const [text, setText] = useState("")
 
-
+    const [paymentMethod, setPaymentMethod] = useState<string>("")
     const [partnerName, setPartnerName] = useState<string>()
     useEffect(()=>{
         api.get('/partnerName', {headers:{partnerid:budget.partnerId}}).then((response)=>{
@@ -34,10 +36,19 @@ export const Budget = ({budget}:Props) => {
         api.put('/contractService',{
             eventId:router.query.event,
             partnerId:budget.partnerId,
-            budgetItem:budget.budgetItem
+            budgetItem:budget.budgetItem,
+            paymentMethod:paymentMethod
+        }).then((response)=>{
+            setText(response.data.qr_codes[0].text)
+            setQrCode(response.data.qr_codes[0].links[0].href)
+            console.log(response.data)
+            setStep(2)
         })
+        
     }
-
+    const onOptionChange = (e:any) => {
+        setPaymentMethod(e.target.value)
+      }
 
     return(
         <>
@@ -105,7 +116,9 @@ export const Budget = ({budget}:Props) => {
                         </div>
                         <div>
                             <label className="w-full bg-white p-2 rounded-t-lg border-b flex items-center gap-3">
-                                <input type="radio" id="boleto" name="payment-method"/>
+                                <input type="radio" value={"boleto"} id="boleto" name="payment-method"         
+                                checked={paymentMethod === "boleto"}
+                                onChange={onOptionChange}/>
                                 <img src="/payments_icons/boleto_icon.png" alt=""  className="object-contain h-4 w-9"/>
                                 <div className="flex flex-col">
                                     <p className="text-lg">Boleto</p>
@@ -113,7 +126,9 @@ export const Budget = ({budget}:Props) => {
                                 </div>
                             </label>
                             <label className="w-full bg-white p-2 rounded-b-lg flex gap-3">
-                                <input type="radio" id="pix" name="payment-method"/>
+                                <input type="radio" value={"pix"} id="pix" name="payment-method" 
+                                checked={paymentMethod === "pix"}
+                                onChange={onOptionChange}/>
                                 <img src="/payments_icons/pix_icon.png" alt="" className="object-contain h-8 w-8"/>
                                 <div className="flex flex-col">
                                     <p className="text-lg">Pix</p>
@@ -154,6 +169,11 @@ export const Budget = ({budget}:Props) => {
                         </Dialog>
                         
                     </div>
+                </div>}
+                {step==2 && paymentMethod == "pix" &&
+                <div>
+                    {text}
+                    <img src={qrCode}/>
                 </div>
                 }
                 {budget.status == "requested" && 

@@ -1,6 +1,7 @@
 export type EventsType = {
     name: string,
     types: string[],
+    status:string,
     publicOfEvent: string[],
     place: {
         placeName: string,

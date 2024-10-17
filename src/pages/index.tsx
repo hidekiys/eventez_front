@@ -1,13 +1,11 @@
-import { PageConfig } from "@/components/pageConfig/pageConfig";
-import { parseCookies } from "nookies";
-import { GetServerSideProps } from "next/types";
-import { Button, ConfigProvider, Space } from 'antd';
+import { Header } from "@/components/pageConfig/header";
+import React from "react";
 
 function Page() {
 
     return (
       <>
-        <PageConfig/>
+        <Header/>
       </>
   
     );

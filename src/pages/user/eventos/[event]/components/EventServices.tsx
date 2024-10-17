@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { EventService } from "./EventService";
 
 
@@ -19,7 +20,8 @@ export const EventServices = ({services}:Props) => {
     <div className="flex flex-col">
         <div className="flex justify-between">
             <div className="flex ml-3"><p>Nome</p><p className="ml-20">serviço</p></div>
-            <div className="text-lg text-principal-300 font-light">adicionar</div>
+            <Link href={"/services"} className="text-lg text-principal-300 font-light hover:text-principal-200
+            hover:drop-shadow-lg transition-all">adicionar</Link>
         </div>
         <div className="flex flex-col max-w-full overflow-auto gap-2">
             {services &&

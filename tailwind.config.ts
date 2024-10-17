@@ -17,7 +17,16 @@ const config = {
         "2xl": "1400px",
       },
     },
+    
     extend: {
+
+        transitionProperty: {
+          'height': 'height'
+        },
+        variants: {
+          height: ['responsive', 'hover', 'focus']
+      },
+ 
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
