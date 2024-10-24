@@ -21,6 +21,7 @@ export const GetBudget = ({getServices, setGetServices}:Props) =>{
     const [selectedEvent, setSelectedEvent] = useState<SelectedType>({name:'',value:''})
     const [login, setLogin] = useState<boolean>(false)
     const router = useRouter()
+    const [budgetText, setBudgetText] = useState("")
     const [pathname, setPathname] = useState<string | string[] | undefined>()
 
     const [disabledBudget, setDisabledBudget] = useState<boolean>(true)
@@ -59,6 +60,7 @@ export const GetBudget = ({getServices, setGetServices}:Props) =>{
         api.put('/requestBudget',{
             eventId:selectedEvent.value,
             services:getServices,
+            description:budgetText,
             partnerId:pathname
         }).then(()=>{
             toast.success('Orçamento solicitado com sucesso!')
@@ -85,6 +87,13 @@ export const GetBudget = ({getServices, setGetServices}:Props) =>{
         <>
             <h1>Pedir orçamento</h1>
                         <ComboEvents  selectedEvent={selectedEvent} setSelectedEvent={setSelectedEvent}/>
+                        <textarea className="w-full rounded-xl border resize-y resize-x-none px-3 py-1 min-h-56" 
+                        placeholder="Digite o que deseja no orçamento..."
+                        value={budgetText}
+                        onChange={(e)=>setBudgetText(e.target.value)}
+                        >
+
+                        </textarea>
                         <div className="h-32 w-full rounded-xl bg-gray-100 px-3 py-1 flex gap-1">
                             {
                                 getServices.length == 0 || getServices[0] == "" &&

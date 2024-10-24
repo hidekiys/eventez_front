@@ -1,4 +1,4 @@
-import { Armchair, Coffee, MapPinHouse, Martini, Music, PaintRoller, Sparkles, Speaker } from "lucide-react";
+import { Armchair, Beer, Camera, Cctv, Coffee, Gem, Hammer, Lightbulb, MapPinHouse, Martini, Music, NotebookPen, PaintBucket, PaintRoller, Sparkles, Speaker } from "lucide-react";
 
 export const typesOfServices = [
   {
@@ -12,6 +12,10 @@ export const typesOfServices = [
   {
     name:"Decoração", 
     image:<PaintRoller />
+  },
+  {
+    name:"Bar", 
+    image:<Beer />
   },
   {
     name:"Iluminação", 
@@ -32,5 +36,29 @@ export const typesOfServices = [
   {
     name:"Espaço", 
     image:<MapPinHouse />
+  },
+  {
+    name:"Estandes", 
+    image:<Hammer />
+  },
+  {
+    name:"Limpeza", 
+    image:<PaintBucket />
+  },
+  {
+    name:"Segurança", 
+    image:<Cctv />
+  },
+  {
+    name:"Iluminação", 
+    image:<Lightbulb />
+  },
+  {
+    name:"Fotografia", 
+    image:<Camera />
+  },
+  {
+    name:"Ceremonialista", 
+    image:<Gem />
   },
   ];

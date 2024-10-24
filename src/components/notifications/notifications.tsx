@@ -45,7 +45,7 @@ export const Notifications = () => {
             <div className="bg-white rounded-t-xl py-1 text-center text-2xl">
                 Notificações
             </div>
-            <div className="flex flex-col min-h-40 bg-gray-200 rounded-b-xl justify-start items-center
+            <div className="flex flex-col-reverse min-h-40 bg-gray-200 rounded-b-xl justify-start items-center
             max-h-[calc(70vh)] overflow-y-auto pb-3">
                 {notifications && notifications?.map((key, index)=> (
                     <Notification key={index} data={key}/>

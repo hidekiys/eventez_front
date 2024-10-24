@@ -167,6 +167,7 @@ export const ChatContent = ({chat,chatName, userid}:Props) =>{
                 <h1 className="flex justify-center rounded-t-xl bg-white px-3 py-1">Conversas</h1>
                 <div className=" bg-gray-200 rounded-b-xl min-h-[30vh] ">
                     {contacts && contacts.map((key,index)=>(
+                        key != null &&
                         <div className="flex flex-col items-center">
                         {currentChat.id == key.id &&
                         <div className="w-[95%] h-9 flex items-center mt-2 px-3 rounded-xl bg-gray-300 " key={index}>

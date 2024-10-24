@@ -43,7 +43,10 @@ function Page() {
                 password: data.password
             }).then((response) => {
                 const { token } = response.data
-    
+                if(response.status == 203)
+                {
+                    Router.push(`/confirmarEmail?id=${response.data.id}`)
+                }
                 
                 
 
@@ -61,6 +64,7 @@ function Page() {
                         },
                         id: response.data.id,
                         email: response.data.email,
+                        document: response.data.document,
                         url_avatar: response.data.url_avatar
                     })
                     if(profile) {Router.push(`/perfil/${profile}`)}else{Router.push("/user/home")}
@@ -96,11 +100,11 @@ function Page() {
     <LoginHeader/>
     
         <div className="grid grid-cols-3">
-            <div className="col-span-2 h-screen overflow-scroll">
+            <div className="col-span-2 h-fit">
                 <About/>
             </div>
-            <div className="flex flex-col text-center items-center col-span-1 mt-28">
-                <h1 className="text-gray-700 text-2xl">Bem vindo de volta</h1>
+            <div className="fixed top-0 mt-0 w-[33%] right-0 flex flex-col text-center bg-white h-screen items-center col-span-1">
+                <h1 className="text-gray-700 text-2xl mt-28">Bem vindo de volta</h1>
                 <p className="text-gray-400">Por favor, logue-se com a sua conta</p>
                 <form className="flex flex-col items-center mt-10 w-full"
                 onSubmit={handleSubmit(handleSignIn) }
@@ -134,7 +138,7 @@ function Page() {
                         </div>
                     }
                     
-                    <input className="w-[calc(80%)] p-2 bg-principal-200 text-gray-50 rounded-full mt-8 hover:cursor-pointer hover:bg-principal-300 transition-all"
+                    <input className="w-[calc(80%)] p-2 bg-principal-200 text-gray-50 rounded-xl mt-8 hover:cursor-pointer hover:bg-principal-300 transition-all"
                      type="submit" value="Entrar"/>
                 </form>
                 <div className="w-full flex items-center justify-center">
@@ -142,7 +146,7 @@ function Page() {
                     <p className="text-gray-600 p-3">ou</p>
                     <hr className="w-[calc(30%)] border-gray-500 "/>
                 </div>
-                <Link href={"/registro"} className="w-[calc(80%)] p-2 bg-gray-600 text-gray-50 rounded-full mb-3">Não possuo uma conta, registrar-me</Link>
+                <Link href={"/registro"} className="w-[calc(80%)] p-2 bg-white shadow-md text-gray-700 rounded-xl mb-3 hover:bg-gray-200 transition-all">Não possuo uma conta, registrar-me</Link>
                 <button className="w-[calc(80%)] p-2 bg-gray-600 text-gray-50 rounded-full mb-3 invisible"
                 
                 >Login com Google</button>

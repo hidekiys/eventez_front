@@ -42,26 +42,8 @@ type eventType = {
       }],
       description:string,
       todoList:[{todoItem:number,todoStatus:boolean, todoDescription:string}],
-      budgets:[{
-        budgetItem:number,
-        date:string,
-        description:string,
-        partnerId:string,
-        services:[string],
-        status:string,
-        value:number,
-      }]
 }
 
-const templateBudgets = [{
-  budgetItem:0,
-  date:'',
-  description:'',
-  partnerId:'',
-  services:[''],
-  status:'',
-  value:0,
-}]
 
 const templatePlace = {
   placeName: '',
@@ -87,8 +69,6 @@ export const EventContent = () => {
         
       })
       .catch(err => {console.log(err)
-        if(err.response.status == 404){
-        }
       })
     }, [[], api])
 
@@ -122,7 +102,7 @@ export const EventContent = () => {
                   
                   </div>
                   <div className="h-3/6">
-                    <Budgets budgets={event?.budgets}/>
+                    <Budgets/>
                   </div>
                   </div>
                 </div>

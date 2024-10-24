@@ -17,21 +17,17 @@ import { publicOfEvent } from "@/pages/user/home/event/publicOfEvent"
 
 
 type Props = {
-        budgetItem: number,
-        eventName: string,
-        eventNumberOfGuests: number,
-        userName: string,
-        date: string,
-        user: string,
         services: [string],
         value: number,
         event: string,
-        status: string,
+        budgetId:string,
+        status:string,
+        description:string
 }
 
 
 
-export const Budget = ({date, eventName, eventNumberOfGuests, userName, budgetItem, event,value,user,services,status}:Props) => {
+export const Budget = ({event,services,status, budgetId ,description}:Props) => {
 
 
     const [summary, setSummary] = useState<EventSummary | undefined>();
@@ -49,7 +45,7 @@ export const Budget = ({date, eventName, eventNumberOfGuests, userName, budgetIt
     const handleSendButton = () => {
         api.put('/createBudget', {
             eventId:event,
-            budgetItem:budgetItem,
+            budgetId:budgetId,
             description:newDescription,
             value:parseFloat(newValue)
         }).then( (res) =>{
@@ -70,18 +66,18 @@ export const Budget = ({date, eventName, eventNumberOfGuests, userName, budgetIt
                 
             <div className="bg-white rounded-lg w-full 
                         grid grid-cols-8 p-1 items-center justify-items-start min-w-28 max-w-2xl hover:bg-gray-200 hover:transition-all">
-                            <p className="col-span-1 text-xs">{`${date?.slice(8, 10)}/${date?.slice(5,7)}/${date?.slice(0,4)}`}</p>
-                            <p className="col-span-3 flex flex-col items-start">{eventName}
+                            <p className="col-span-1 text-xs">{`${summary?.date?.slice(8, 10)}/${summary?.date?.slice(5,7)}/${summary?.date?.slice(0,4)}`}</p>
+                            <p className="col-span-3 flex flex-col items-start">{summary?.name}
                                 <p className="text-xs">{summary?.types?.join(' ')}</p>
 
                             </p>
-                            <p className="col-span-3">{userName}</p>
-                            <p className="col-span-1 justify-self-end mr-7 text-xs">{eventNumberOfGuests}</p>
+                            <p className="col-span-3">{summary?.owner}</p>
+                            <p className="col-span-1 justify-self-end mr-7 text-xs">{summary?.numberOfGuests}</p>
                         </div>
             </DialogTrigger>
 
 
-            {status == "request" &&
+            {status == "request" && summary != undefined && summary.date != undefined &&
                 <DialogContent className="min-w-[50vw] min-h-fit">
                 <DialogHeader>
                 <DialogTitle>Criar orçamento</DialogTitle>
@@ -93,16 +89,20 @@ export const Budget = ({date, eventName, eventNumberOfGuests, userName, budgetIt
 
 
                     <div className="flex gap-3 w-full max-h-fit min-h-fit">
-                        <div className="px-4 py-2 rounded-xl  bg-white text-sm w-2/5">
-                            <h1 className="text-lg">{eventName}</h1>
-                            <p>Cliente: {userName}</p>
-                            <p>Convidados: {eventNumberOfGuests}</p>
+                        <div className="px-4 py-2 rounded-xl  bg-white text-sm w-2/5 overflow-y-auto">
+                            <h1 className="text-lg">{summary?.name}</h1>
+                            <p>Cliente: {summary?.owner}</p>
+                            <p>Convidados: {summary?.numberOfGuests}</p>
                             <p>Público: {summary?.publicOfEvent?.join(', ')}</p>
                             <p>Horário: {summary?.initialTime?.substring(0,5)} - {summary?.endTime?.substring(0,5)}</p>
-                            <p>Data: {`${date?.slice(8, 10)}/${date?.slice(5,7)}/${date?.slice(0,4)}`}</p>
+                            <p>Data: {`${summary?.date?.slice(8, 10)}/${summary?.date?.slice(5,7)}/${summary?.date?.slice(0,4)}`}</p>
                             <p>Local: {summary?.place?.placeName}</p>
                             <p>Endereço: {summary?.place?.street}, {summary?.place?.number}</p>
                         </div>
+                        <div className="px-4 py-2 rounded-xl overflow-y-auto bg-white text-md w-2/5">
+                        Solicitação
+                                <p className="text-sm">{description}</p>
+                            </div>
                         <div className="flex flex-col gap-3 w-3/5 ">
                             <div className="p-2 rounded-xl bg-white w-full h-full flex flex-col text-lg">
                                 Serviços solicitados
@@ -180,7 +180,7 @@ export const Budget = ({date, eventName, eventNumberOfGuests, userName, budgetIt
                 <DialogContent>
                     <DialogHeader>
                         <DialogTitle>
-                            {eventName}
+                            {summary?.name}
                         </DialogTitle>
                         <DialogDescription>
                             Este orçamento está aguardando respostas do cliente.
@@ -192,12 +192,12 @@ export const Budget = ({date, eventName, eventNumberOfGuests, userName, budgetIt
 
                         <div className="flex gap-3 w-full max-h-fit min-h-fit">
                             <div className="px-4 py-2 rounded-xl  bg-white text-sm w-2/5">
-                                <h1 className="text-lg">{eventName}</h1>
-                                <p>Cliente: {userName}</p>
-                                <p>Convidados: {eventNumberOfGuests}</p>
+                                <h1 className="text-lg">{summary?.name}</h1>
+                                <p>Cliente: {summary?.owner}</p>
+                                <p>Convidados: {summary?.numberOfGuests}</p>
                                 <p>Público: {summary?.publicOfEvent?.join(', ')}</p>
                                 <p>Horário: {summary?.initialTime?.substring(0,5)} - {summary?.endTime?.substring(0,5)}</p>
-                                <p>Data: {`${date.slice(8, 10)}/${date.slice(5,7)}/${date.slice(0,4)}`}</p>
+                                <p>Data: {`${summary?.date.slice(8, 10)}/${summary?.date.slice(5,7)}/${summary?.date.slice(0,4)}`}</p>
                                 <p>Local: {summary?.place?.placeName}</p>
                                 <p>Endereço: {summary?.place?.street}, {summary?.place?.number}</p>
                             </div>

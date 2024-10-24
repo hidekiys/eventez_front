@@ -1,23 +1,31 @@
+import { useEffect, useState } from "react"
 import { Budget } from "./Budget"
+import { BudgetsType } from "@/types/BudgetType"
+import { api } from "@/utils/api"
 
 
 
-type Props = {
-        budgets: [{
-        budgetItem: number,
-        date: string,
-        description: string,
-        partnerId: string,
-        services: [string],
-        status: string,
-        value: number,
-    }] | undefined
-}
 
+export const Budgets = () => {
+    const [budgets, setBudgets] = useState<BudgetsType[]>()
 
-export const Budgets = ({budgets}:Props) => {
-    
-    
+    useEffect(()=>{
+        setInterval(()=>{
+            api.get('/getUserBudgets').then((response)=>{
+                setBudgets(response.data)
+            }).catch((err)=>{
+                console.log(err)
+            })
+        }, 30000)
+    },[])
+    useEffect(()=>{
+            api.get('/getUserBudgets').then((response)=>{
+                console.log(response.data)
+                setBudgets(response.data)
+            }).catch((err)=>{
+                console.log(err)
+            })
+    },[])
     return(
         <>
         <div className="flex flex-col">
@@ -27,8 +35,8 @@ export const Budgets = ({budgets}:Props) => {
             </div>
             <div className="flex flex-col gap-1">
         {budgets &&
-            budgets.map((key)=> (
-                <Budget key={key.budgetItem} budget={key}/>
+            budgets.map((key, index)=> (
+                <Budget key={index} budget={key}/>
             ))
 
         }

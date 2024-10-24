@@ -16,6 +16,7 @@ const defaultState = {
         },
         id: '',
         email: '',
+        document:'',
         events: [''],
         url_avatar:''
     },
@@ -39,6 +40,7 @@ export default function UserProvider({children} : UserProviderProps){
         id: '',
         email: '',
         events:[''],
+        document:'',
         url_avatar:''
     });
 
@@ -54,6 +56,7 @@ export default function UserProvider({children} : UserProviderProps){
                 },
                 id: response.data.id,
                 email: response.data.email,
+                document:response.data.document,
                 events: response.data.events,
                 url_avatar: response.data.url_avatar
             

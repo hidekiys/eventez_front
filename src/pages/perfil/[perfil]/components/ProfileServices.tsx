@@ -49,15 +49,17 @@ export const ProfileServices = ({setGetServices, getServices, offerServices}:Pro
             {
                 offerServices.map((key, index)=>(
                     <SwiperSlide>
-                        <div className="h-56 w-40 rounded-xl bg-white" key={index}>
+                        <div className="h-72 w-40 rounded-xl bg-white" key={index}>
                             <div className='p-2 h-full flex flex-col justify-between gap-2'>
                                 <div className='flex flex-col gap-2'>
                                     <div className='flex flex-col'>
                                         <h1 className=''>{key.name}</h1>
                                         <p className='text-xs'>custo médio: R${key.averagePrice}</p>
                                     </div>
+                                    <div className='overflow-y-auto max-h-36'>
+                                        <p className='text-xs'>{key.description}</p>
+                                    </div>
                                     
-                                    <p className='text-xs'>{key.description}</p>
                                 </div>
                                 {login &&
                                 <button className='w-full py-2 rounded-xl hover:bg-principal-400 transition-all bg-principal-300 text-white text-xs'

@@ -1,59 +1,45 @@
 import { api } from "@/utils/api";
 import { useEffect, useState } from "react"
 import { Budget } from "./budget";
+import { BudgetsType } from "@/types/BudgetType";
 
 
-
-    type BudgetType =  {
-        budgetItem: number,
-        eventName: string,
-        eventNumberOfGuests: number,
-        userName: string,
-        date: string,
-        user: string,
-        services: [string],
-        value: number,
-        event: string,
-        status: string,
-    }
-    type BudgetsType =  BudgetType[]
 
 
 export const Budgets = () => {
 
 
     const [checked, setChecked] = useState('all')
-    const [budget, setBudget] = useState<BudgetsType>()
-    const [newRequest, setNewRequest] = useState<BudgetsType | null>()
-    const [sendedBudgets, setSendedBudgets] = useState<BudgetsType | null>()
-
+    const [budget, setBudget] = useState<BudgetsType[]>()
+    const [newRequest, setNewRequest] = useState<BudgetsType[] | null>()
+    const [sendedBudgets, setSendedBudgets] = useState<BudgetsType[] | null>()
 
 
     useEffect(() => {
-        api.get('/getBudgets').then((response)=> {
-            console.log(response.data)
-            setBudget(response.data)
-            const newRequest: BudgetsType | null= response.data?.filter((budget: BudgetType) => budget.status == "request") || null
-            const sendedBudget: BudgetsType | null= response.data?.filter((budget: BudgetType) => budget.status == "sended") || null
-            setNewRequest(newRequest)
-            setSendedBudgets(sendedBudget)
-        })
-    },[])
+            api.get('/getPartnerBudgets').then((response)=> {
+                console.log(response.data)
+                setBudget(response.data)
+                const newRequest: BudgetsType[] | null= response.data?.filter((budget: BudgetsType) => budget.status.partner == "request") || null
+                const sendedBudget: BudgetsType[] | null= response.data?.filter((budget: BudgetsType) => budget.status.partner == "sended") || null
+                setNewRequest(newRequest)
+                setSendedBudgets(sendedBudget)
+            })
+            
+
+    }, [])
+
     
     useEffect(() => {
-        
-        let timerId = setInterval(() => {
-            api.get('/getBudgets').then((response)=> {
+        setInterval(() => {
+            api.get('/getPartnerBudgets').then((response)=> {
                 setBudget(response.data)
-                const newRequest: BudgetsType | null= response.data?.filter((budget: BudgetType) => budget.status == "request") || null
-                const sendedBudget: BudgetsType | null= response.data?.filter((budget: BudgetType) => budget.status == "sended") || null
+                const newRequest: BudgetsType[] | null= response.data?.filter((budget: BudgetsType) => budget.status.partner == "request") || null
+                const sendedBudget: BudgetsType[] | null= response.data?.filter((budget: BudgetsType) => budget.status.partner == "sended") || null
                 setNewRequest(newRequest)
                 setSendedBudgets(sendedBudget)
             })
             
           }, 30000);
-        
-          return () => clearTimeout(timerId);
     }, [])
 
 
@@ -90,25 +76,22 @@ export const Budgets = () => {
             <div className="max-h-52 overflow-auto flex flex-col w-full gap-1">
                 
                 {checked == "all" &&
-                    budget?.map((key)=>(
-                        <Budget budgetItem={key.budgetItem} key={key.budgetItem} eventName={key.eventName} eventNumberOfGuests={key.eventNumberOfGuests}
-                        date={key.date} userName={key.userName} user={key.user} services={key.services} value={key.value} event={key.event} status={key.status}/>
+                    budget?.map((key:BudgetsType, index)=>(
+                        <Budget key={index} event={key.event} value={key.value} services={key.service.services} status={key.status.partner} budgetId={key._id} description={key.service.description}/>
                     ))
                 
                 
                 }
                 {checked == "new" &&
-                    newRequest?.map((key)=>(
-                        <Budget budgetItem={key.budgetItem} key={key.budgetItem} eventName={key.eventName} eventNumberOfGuests={key.eventNumberOfGuests}
-                        date={key.date} userName={key.userName} user={key.user} services={key.services} value={key.value} event={key.event} status={key.status}/>
+                    newRequest?.map((key, index)=>(
+                        <Budget key={index} event={key.event} value={key.value} services={key.service.services} status={key.status.partner} budgetId={key._id} description={key.service.description}/>
                     ))
                 
                 
                 }
                 {checked == "sended" &&
-                    sendedBudgets?.map((key)=>(
-                        <Budget budgetItem={key.budgetItem} key={key.budgetItem} eventName={key.eventName} eventNumberOfGuests={key.eventNumberOfGuests}
-                        date={key.date} userName={key.userName} user={key.user} services={key.services} value={key.value} event={key.event} status={key.status}/>
+                    sendedBudgets?.map((key, index)=>(
+                        <Budget key={index} event={key.event} value={key.value} services={key.service.services} status={key.status.partner} budgetId={key._id} description={key.service.description}/>
                     ))
                 
                 

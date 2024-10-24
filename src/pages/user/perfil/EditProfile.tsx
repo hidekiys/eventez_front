@@ -18,6 +18,7 @@ import {   Sheet,
         AlertDialogTitle,
         AlertDialogTrigger,
       } from "@/components/ui/alert-dialog"
+      
 
 
 import { useContext, useEffect, useState } from "react";
@@ -25,10 +26,13 @@ import { api } from "@/utils/api";
 import { UserContext } from "@/contexts/UserContext";
 import { FullName } from "@/types/FullName";
 import React from "react";
+import { cpf } from 'cpf-cnpj-validator';
 
 
 export const EditProfile = () => {
     const [phone, setPhone] = useState('');
+    const [cpfText, setCPFText] = useState('');
+    const [validCpf, setValidCpf] = useState(true)
     const [fullName, setFullName] = useState<FullName>({name:'', lastName:''});
     const { user, setUser } = useContext(UserContext);
     const [pass, setPass] = useState('');
@@ -40,6 +44,16 @@ export const EditProfile = () => {
         
         
     }, [user.url_avatar])
+    useEffect(()=>{
+        const regex = '[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}'
+        if(regex.match(cpfText)){
+            setValidCpf(false)
+        }else{
+            setValidCpf(true)
+        }
+        
+
+    },[cpfText])
 
 
 
@@ -47,33 +61,40 @@ export const EditProfile = () => {
         api.get('/getPhone').then((response) => {
             setPhone(response.data.phone)
         })
+        api.get('/getDocument').then((response)=>{
+            setCPFText(response.data.document)
+        })
     }, [])
 
-    
+
     const handleSave = () => {
-        api.put('/putUserInfo', {
-            ...user,
-                name:{
-                    firstName: fullName.name,
-                    lastName: fullName.lastName
-                },
-                phone: phone,
-                pass: pass
-            
-        }).then( () => {
-            setUser({...user, name:{firstName:fullName.name, lastName:fullName.lastName}})
-            toast.success("Alterações salvas com sucesso!")
-            setPass("")
-            setOpen(false)
-            
+        if(validCpf){
+            api.put('/putUserInfo', {
+                ...user,
+                    name:{
+                        firstName: fullName.name,
+                        lastName: fullName.lastName
+                    },
+                    document: cpfText,
+                    phone: phone,
+                    pass: pass
+                
+            }).then( () => {
+                setUser({...user, name:{firstName:fullName.name, lastName:fullName.lastName}})
+                toast.success("Alterações salvas com sucesso!")
+                setPass("")
+                setOpen(false)
+                
+            }
+                
+            ).catch((err) => {
+                console.log(err)
+                toast.error(err.response.data)
+                
+                
+            })
         }
-            
-        ).catch((err) => {
-            console.log(err)
-            toast.error(err.response.data)
-            
-            
-        })
+    
     }
     
     
@@ -108,6 +129,19 @@ export const EditProfile = () => {
                             placeholder="Sobrenome"
                             className="h-10 w-80 shadow-md rounded-md p-3"
                             />
+                        </div>  
+                        <div className="flex flex-col gap-2 mt-6">
+                            <h1 className="text-lg flex items-center">CPF</h1>
+                            <input type="text" value={cpfText} 
+                            onChange={e => setCPFText(e.target.value)}
+                            placeholder="insira seu CPF aqui..."
+                            className="h-10 w-full shadow-md border-gray-200 rounded-md p-3"
+                            />
+                            <p className={`${validCpf ? "invisible" : "visible"} text-principal-100`}>
+                                Insira um cpf válido
+                            </p>
+
+                            
                         </div>   
                         <div className="flex flex-col gap-2 mt-6">
                             <h1 className="text-lg flex items-center">Telefone</h1>
@@ -118,9 +152,11 @@ export const EditProfile = () => {
                             />
                             
                         </div>   
+
                         
                         <AlertDialog>
-                        <AlertDialogTrigger className="text-center text-gray-100 bg-principal-100 h-8 w-full mt-6 rounded-lg hover:shadow-md hover:cursor-pointer">
+                        <AlertDialogTrigger 
+                        className="text-center text-gray-100 bg-principal-100 h-8 w-full mt-6 rounded-lg hover:shadow-md hover:cursor-pointer">
                             Salvar alterações
                         </AlertDialogTrigger>
                         <AlertDialogContent>

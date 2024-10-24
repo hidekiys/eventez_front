@@ -1,3 +1,6 @@
+import Link from "next/link"
+import { useRouter } from "next/router"
+import { useEffect } from "react"
 
 
 
@@ -5,9 +8,11 @@
 
 
 export const EventFinancial = () => {
+
+    const router = useRouter()
     return(
         <>
-         <div className="bg-white rounded-md  transition-all
+            <Link href={`/user/eventos/${router.query.event}/financeiro`} className="bg-white rounded-md  transition-all
                     h-20  mt-3 max-w-full p-6 min-w-60
                     flex flex-col items-start justify-center
                     hover:shadow-md hover:scale-105">
@@ -16,7 +21,7 @@ export const EventFinancial = () => {
             <p className="text-gray-600 text-sm md">Gastos estimados: R$ 5.000</p>
 
 
-        </div>
+        </Link>
         </>
     )
 }

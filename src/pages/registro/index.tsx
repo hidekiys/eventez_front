@@ -38,11 +38,11 @@ function Page() {
     <LoginHeader/>
     
         <div className="grid grid-cols-3">
-            <div className="col-span-2 h-screen overflow-scroll">
+            <div className="col-span-2 h-fit">
                 <About/>
             </div>
-            <div className="flex flex-col text-center items-center col-span-1 mt-20">
-                <h1 className="text-gray-700 text-2xl">Seja bem vindo</h1>
+            <div className="fixed top-0 mt-0 w-[33%] right-0 flex flex-col text-center bg-white h-screen items-center col-span-1">
+                <h1 className="text-gray-700 text-2xl mt-28">Seja bem vindo</h1>
                 <p className="text-gray-400">Por favor, registre sua conta</p>
                 <form 
                     className="flex flex-col items-center mt-10 w-full"
@@ -85,7 +85,7 @@ function Page() {
                         </div>
                     }
                     
-                    <input className="w-[calc(80%)] p-2 bg-principal-200 text-gray-50 rounded-full mt-8 hover:cursor-pointer hover:bg-principal-300 transition-all"
+                    <input className="w-[calc(80%)] p-2 bg-principal-200 text-gray-50 rounded-xl mt-8 hover:cursor-pointer hover:bg-principal-300 transition-all"
                      type="submit" value="Registrar-se"/>
                 </form>
                 <div className="w-full flex items-center justify-center">
@@ -93,7 +93,7 @@ function Page() {
                     <p className="text-gray-600 p-3">ou</p>
                     <hr className="w-[calc(30%)] border-gray-500 "/>
                 </div>
-                <Link href={"/login"} className="w-[calc(80%)] p-2 bg-gray-600 text-gray-50 rounded-full mb-3">Já possuo uma conta</Link>
+                <Link href={"/login"} className="w-[calc(80%)] p-2 bg-white shadow-md text-gray-700 rounded-xl mb-3 hover:bg-gray-200 transition-all">Já possuo uma conta</Link>
                 <button className="w-[calc(80%)] p-2 bg-gray-600 text-gray-50 rounded-md mb-3 invisible"
                 
                 >Login com Google</button>

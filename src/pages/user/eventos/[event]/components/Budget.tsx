@@ -1,19 +1,12 @@
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { BudgetsType } from "@/types/BudgetType";
 import { api } from "@/utils/api";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 
 type Props = {
-    budget:{
-        budgetItem: number,
-        date: string,
-        description: string,
-        partnerId: string,
-        services: [string],
-        status: string,
-        value: number,
-    }
+    budget:BudgetsType
 }
 
 
@@ -23,11 +16,13 @@ export const Budget = ({budget}:Props) => {
     const router = useRouter()
     const[qrCode, setQrCode] = useState("")
     const [text, setText] = useState("")
+    const [dialogErrorText, setDialogErrorText] = useState("")
+    const [dialogError, setDialogError] = useState(false)
 
     const [paymentMethod, setPaymentMethod] = useState<string>("")
     const [partnerName, setPartnerName] = useState<string>()
     useEffect(()=>{
-        api.get('/partnerName', {headers:{partnerid:budget.partnerId}}).then((response)=>{
+        api.get('/partnerName', {headers:{partnerid:budget.users.partner}}).then((response)=>{
             setPartnerName(response.data)
         })
     }, [])
@@ -35,14 +30,21 @@ export const Budget = ({budget}:Props) => {
     const handleConfirmButton = () =>{
         api.put('/contractService',{
             eventId:router.query.event,
-            partnerId:budget.partnerId,
-            budgetItem:budget.budgetItem,
+            partnerId:budget.users.partner,
+            budgetId:budget._id,
             paymentMethod:paymentMethod
         }).then((response)=>{
+            console.log(response.data)
             setText(response.data.qr_codes[0].text)
             setQrCode(response.data.qr_codes[0].links[0].href)
             console.log(response.data)
             setStep(2)
+        }).catch((err)=>{
+            console.log(err.data)
+            if(err.status == 406){
+                setDialogError(true)
+                setDialogErrorText("insira o CPF corretamente!")
+            }
         })
         
     }
@@ -52,18 +54,25 @@ export const Budget = ({budget}:Props) => {
 
     return(
         <>
-        
+        <Dialog open={dialogError}>
+            <DialogContent>
+                <h1>{dialogErrorText}</h1>
+                <DialogClose onClick={()=>setDialogError(false)}>
+                    Ok
+                </DialogClose>
+            </DialogContent>
+        </Dialog>
         <Dialog onOpenChange={()=>setStep(0)}>
             <DialogTrigger>
                     <div className={" pt-2 duration-300 w-full bg-white rounded-xl px-3 py-2 flex justify-between hover:bg-gray-100 hover:cursor-pointer"}>
                         <h1 className="w-[calc(21%)] overflow-hidden font-semibold">{partnerName}</h1>
-                        {budget.status == "received" &&
+                        {budget.status.user == "received" &&
                             <p className="font-bold text-green-300 text-sm">Recebido</p>
                         }
-                        {budget.status == "requested" &&
+                        {budget.status.user == "requested" &&
                             <p className="font-bold text-yellow-300 text-sm">Solicitado</p>
                         }
-                        {budget.status == "waiting" &&
+                        {budget.status.user == "waiting" &&
                             <p className="font-bold text-gray-300 text-sm">Aguardando pagamento </p>
                         }
                     </div>
@@ -77,19 +86,19 @@ export const Budget = ({budget}:Props) => {
 
                     </DialogDescription>
                 </DialogHeader>
-                {budget.status == "received" && 
+                {budget.status.user == "received" && 
                 step == 0 ?
                     <div className="flex flex-col gap-3">
                     <div className="flex flex-col w-full rounded-md bg-white p-2">
                         <h1 className="text-lg">Serviços solicitados</h1>
                         <p>
-                            {budget.services.join(', ')}
+                            {budget.service.services.join(', ')}
                         </p>
                     </div>
                     <div>
                         <h1 className="text-lg">Descrição do serviço</h1>
                         <div className="bg-white rounded-md p-2 max-h-[50vh] overflow-auto">
-                            <p>{budget.description}</p>
+                            <p>{budget.budgetDescription}</p>
                         </div>
                     </div>
                     <div className="flex items-center">
@@ -176,11 +185,11 @@ export const Budget = ({budget}:Props) => {
                     <img src={qrCode}/>
                 </div>
                 }
-                {budget.status == "requested" && 
+                {budget.status.user == "requested" && 
                 <div>
                     <h1 className="text-lg">Serviços solicitados</h1>
                         <p>
-                            {budget.services.join(', ')}
+                            {budget.service.services.join(', ')}
                         </p>
 
 

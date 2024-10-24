@@ -1,0 +1,19 @@
+export type BudgetsType = {
+    _id:string,
+    users:{
+        user:string,
+        partner:string,
+    },
+    event:string,
+    service:{
+        services:[string],
+        description:string,
+    },
+    budgetDescription:string,
+    value:number,
+    status:{
+        user:string,
+        partner:string
+    },
+    created:Date
+}

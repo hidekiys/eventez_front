@@ -8,6 +8,7 @@ import { Support } from "@/pages/user/suporte/components/Support";
 import { PartnerHome } from "@/pages/partner/home/components/PartnerHome";
 import { PartnerFinancial } from "@/pages/partner/financeiro/components/PartnerFinancial";
 import { Profile as PartnerProfile } from "@/pages/partner/perfil/components/profile"; 
+import { Associate } from "@/pages/associar/components/associate";
 
 
 
@@ -23,6 +24,7 @@ const Content = () => {
         "/partner/home":<PartnerHome/>,
         "/partner/financeiro":<PartnerFinancial/>,
         "/partner/perfil":<PartnerProfile/>,
+        "/associar":<Associate/>,
       }));
       const pathName = usePathname();
       

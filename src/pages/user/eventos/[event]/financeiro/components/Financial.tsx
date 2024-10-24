@@ -2,38 +2,38 @@ import { FinancialType } from "@/types/FinancialType"
 import { api } from "@/utils/api"
 import { useEffect, useState } from "react"
 import { Receipt } from "./Receipt"
+import { useRouter } from "next/router"
 
 
-export const PartnerFinancial = () => {
+export const Financial = () => {
     const [checked, setChecked] = useState('all')
     const [receipts, setReceipts] = useState<FinancialType[]>()
     const [pendings, setPendings] = useState<FinancialType[]>()
-    const [received, setReceived] = useState<FinancialType[]>()
-    const [totalPending, setTotalPending] = useState(0)
-    const [totalReceived, setTotalReceived] = useState(0)
+    const [paid, setPaid] = useState<FinancialType[]>()
+    const [totalPaid, setTotalPaid] = useState(0)
+    const router = useRouter()
     useEffect(()=>{
-        api.get('/getPartnerFinancial').then((response)=>{
+        if(router.isReady){        
+            api.get(`/getEventFinancial/${router.query.event}`).then((response)=>{
             setReceipts(response.data)
-            setPendings(response.data.filter((filter:FinancialType)=>filter.status.partner == "pending"))
-            setReceived(response.data.filter((filter:FinancialType)=>filter.status.partner == "received"))
+            setPendings(response.data.filter((filter:FinancialType)=>filter.status.user == "pending"))
+            setPaid(response.data.filter((filter:FinancialType)=>filter.status.user == "paid"))
         }).catch((err)=>{
             console.log(err)
         })
+    }
 
-    },[])
+
+    },[router.isReady])
     useEffect(()=>{
         const initialValue = 0
-        setTotalPending(pendings?.reduce(
-            (accumulator:any, currentValue:any) => accumulator + currentValue.value,
-            initialValue,
-          ))
-          setTotalReceived(received?.reduce(
+          setTotalPaid(paid?.reduce(
             (accumulator:any, currentValue:any) => accumulator + currentValue.value,
             initialValue,
           ))
 
 
-    },[pendings,received])
+    },[pendings,paid])
 
     return(
         <>
@@ -45,9 +45,9 @@ export const PartnerFinancial = () => {
                         <input className="opacity-0 h-0 w-0" type="radio" name="budgetType" value="all" onClick={(e) => setChecked("all")}/>
                         Todos
                         </label>
-                        <label className={`px-3 h-full hover:bg-gray-100 transition-all items-center flex ${checked == "received" ? "bg-gray-300" : "bg-white"}`}>
-                        <input className="opacity-0 h-0 w-0" type="radio" name="budgetType" value="new" onClick={(e) => setChecked("received")}/>
-                        Recebidos
+                        <label className={`px-3 h-full hover:bg-gray-100 transition-all items-center flex ${checked == "paid" ? "bg-gray-300" : "bg-white"}`}>
+                        <input className="opacity-0 h-0 w-0" type="radio" name="budgetType" value="new" onClick={(e) => setChecked("paid")}/>
+                        Pagos
                         </label>
                         <label className={`px-3 h-full rounded-r-full hover:bg-gray-100 transition-all items-center flex ${checked == "pending" ? "bg-gray-300" : "bg-white"}`}>
                         <input className=" opacity-0 h-0 w-0" type="radio" name="budgetType" value="sended" onClick={(e) => setChecked("pending")}/>
@@ -55,8 +55,8 @@ export const PartnerFinancial = () => {
                         </label>
                     </div>
                     <div className="text-sm p-2 rounded-xl bg-white">
-                        <p>Total pendente: R${totalPending}</p>
-                        <p>Total recebido: R${totalReceived}</p>
+                        <p>Total fechado: R${totalPaid}</p>
+                        <p>Total recebido: R$</p>
                     </div>
                     
                 </div>
@@ -66,10 +66,10 @@ export const PartnerFinancial = () => {
                             Data
                         </div>
                         <div className="col-span-3 flex items-center">
-                            Cliente
+                            Empresa
                         </div>
                         <div className="col-span-4 flex items-center">
-                            Evento
+                            Serviço
                         </div>
                         <div className="col-span-2 flex items-center">
                             Valor
@@ -85,8 +85,8 @@ export const PartnerFinancial = () => {
                             ))
                         
                         }
-                        {received != undefined && checked == "received" &&
-                            received.map((key, index)=>(
+                        {paid != undefined && checked == "paid" &&
+                            paid.map((key, index)=>(
                                 key.status.partner != "waiting" &&
                                 <Receipt receipt={key}/>
                             ))

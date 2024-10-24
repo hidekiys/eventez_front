@@ -5,6 +5,7 @@ export type TypeUser = {
     },
     id: string,
     email: string,
+    document:string,
     events?:[string],
     url_avatar:string
 }
