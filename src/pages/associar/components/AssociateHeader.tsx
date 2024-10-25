@@ -2,7 +2,7 @@
 import { Logo } from "@/components/pageConfig/logo";
 import Link from "next/link";
 
-export const AssociateHeader = () => {
+export default function AssociateHeader()  {
     return (
         <>
         <nav className="w-full h-10 shadow-md z-30 shadow-gray-300 bg-white flex justify-between sticky top-0" >

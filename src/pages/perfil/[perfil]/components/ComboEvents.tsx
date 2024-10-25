@@ -21,7 +21,7 @@ export const ComboEvents = ({setSelectedEvent, selectedEvent}:Props) => {
     const [open, setOpen] = useState(false)
 
 
-    const [ events, setEvents ] = useState<Event>([{name: 'Evento temporario', date:'00/00/0000', _id:''}])
+    const [ events, setEvents ] = useState<Event>([{name: 'Evento temporario', date:'00/00/0000', _id:'', status:''}])
 
     useEffect(() => {
         api.get('/getEvents').then(response => {

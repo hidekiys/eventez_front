@@ -11,7 +11,7 @@ export const PhotoArea = () => {
         setImageURL(user.user.url_avatar)
     }, [user.user.url_avatar])
 
-    const handleUpload = (event) => {
+    const handleUpload = (event:any) => {
         event.preventDefault();
         console.log(event)
         const file = event.target[0]?.files[0]

@@ -31,8 +31,10 @@ export const NewEvent = () => {
     const [step, setStep] = useState(0)
     const [eventId, setEventId] = useState('')
     const [event, setEvent] = useState<EventsType>(
-        {name: '',
+        {
+            name: '',
             types: [''],
+            status:'',
             publicOfEvent: [''],
             place: {
                 placeName: '',
@@ -197,6 +199,7 @@ export const NewEvent = () => {
                     setHasCreated(false)
                     setEvent({name: '',
                         types: [''],
+                        status:'',
                         publicOfEvent: [''],
                         place: {
                             placeName: '',

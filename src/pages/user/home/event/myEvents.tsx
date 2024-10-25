@@ -16,7 +16,7 @@ import { useRouter } from "next/router";
 
 export const MyEvents = () => {
     const router = useRouter()
-    const [ events, setEvents ] = useState<Event>([{name: 'Carregando eventos', date:'00/00/0000', _id:''}])
+    const [ events, setEvents ] = useState<Event>([{name: 'Carregando eventos', date:'00/00/0000', _id:'', status:''}])
 
     useEffect(() => {
         setInterval(()=>{
