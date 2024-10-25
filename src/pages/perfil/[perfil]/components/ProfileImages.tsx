@@ -10,7 +10,7 @@ type Props = {
     images:string[]
 }
 
-export const ProfileImages = ({images}:Props    ) => {
+const ProfileImages = ({images}:Props    ) => {
     useEffect(() => {
         const stylesheet = document.styleSheets[0];
         stylesheet.insertRule(".swiper-pagination-bullet-active { background: #f24f13 !important;}", 0);   
@@ -43,3 +43,5 @@ export const ProfileImages = ({images}:Props    ) => {
 
     )
 }
+
+export default ProfileImages;

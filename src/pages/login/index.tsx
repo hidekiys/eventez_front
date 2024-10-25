@@ -4,8 +4,8 @@ import { useContext, useEffect, useState } from "react";
 import { setCookie } from "nookies";
 import Router, { useRouter } from "next/router";
 
-import { About } from "@/components/firstPage/About";
-import { LoginHeader } from "./components/LoginHeader";
+import  About  from "@/components/firstPage/About";
+import  LoginHeader  from "./components/LoginHeader";
 import { FormLogin } from "@/types/FormLogin";
 import { api } from "@/utils/api";
 import { UserContext } from "@/contexts/UserContext";

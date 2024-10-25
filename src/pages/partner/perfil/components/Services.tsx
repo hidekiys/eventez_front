@@ -21,7 +21,7 @@ type OfferServiceType = {
 }
 
 
-export const Services = () =>{
+const Services = () =>{
     const [offerServices, setOfferServices] = useState<OfferServiceType[]>()
     const [editService, setEditSevice] = useState<OfferServiceType>({name:'',description:'',averagePrice:0})
 
@@ -217,3 +217,4 @@ export const Services = () =>{
         </>
     )
 }
+export default Services;

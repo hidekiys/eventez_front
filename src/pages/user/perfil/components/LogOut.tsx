@@ -7,7 +7,7 @@ import { deleteCookie } from 'cookies-next';
 
 
 
-export const LogOut = () =>{
+const LogOut = () =>{
     const router = useRouter()
     const handleLogOut = () => {
         destroyCookie(undefined, 'eventez.user.token');
@@ -31,3 +31,5 @@ export const LogOut = () =>{
         </>
     )
 }
+
+export default LogOut;

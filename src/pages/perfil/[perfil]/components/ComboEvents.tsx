@@ -16,7 +16,7 @@ type Props = {
 }
 
 
-export const ComboEvents = ({setSelectedEvent, selectedEvent}:Props) => {
+const ComboEvents = ({setSelectedEvent, selectedEvent}:Props) => {
     const { user } = useContext(UserContext);
     const [open, setOpen] = useState(false)
 
@@ -80,3 +80,4 @@ export const ComboEvents = ({setSelectedEvent, selectedEvent}:Props) => {
         </>
     )
 }
+export default ComboEvents;

@@ -22,7 +22,7 @@ import { api } from "@/utils/api";
 import { KeyboardEvent, useEffect, useRef, useState } from "react";
 import React from "react";
 
-export const Address = () => {
+const Address = () => {
     const [address, setAddress] = useState<TypeAddress>({cep:'', state:'', street:'', city:'', neighborhood:'',number:'', complement:''});
     const [pass, setPass] = useState('');
     const [open, setOpen] = useState(false);
@@ -178,3 +178,5 @@ export const Address = () => {
 
     );
 }
+
+export default Address;

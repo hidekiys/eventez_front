@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import  AssociateHeader  from "./components/AssociateHeader";
-import { Associate } from "./components/associate";
+import  Associate  from "./components/associate";
 
 
 function Page() {

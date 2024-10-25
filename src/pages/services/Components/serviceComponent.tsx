@@ -7,7 +7,7 @@ type Props = {
 }
 
 
-export const ServiceComponent = ({service}:Props) => {
+const ServiceComponent = ({service}:Props) => {
 
 
 
@@ -37,3 +37,5 @@ export const ServiceComponent = ({service}:Props) => {
         </>
     )
 }
+
+export default ServiceComponent;

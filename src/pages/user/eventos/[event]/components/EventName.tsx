@@ -10,7 +10,7 @@ import {
     SheetTitle,
     SheetTrigger,
   } from "@/components/ui/sheet"
-import { ConfirmDelete } from "./ConfirmDelete";
+import ConfirmDelete from "./ConfirmDelete";
 type Props = {
     eventName:string,
     types: string[],
@@ -19,7 +19,7 @@ type Props = {
 
 
 
-export const EventName = ({eventName, types, setNotFound}:Props) => {
+const EventName = ({eventName, types, setNotFound}:Props) => {
     const [open, setOpen] = useState(false);
 
 
@@ -47,3 +47,5 @@ export const EventName = ({eventName, types, setNotFound}:Props) => {
 
 
 }
+
+export default EventName;

@@ -1,12 +1,12 @@
 import { api } from "@/utils/api";
 import { useEffect, useState } from "react"
-import { Budget } from "./budget";
+import Budget from "./budget";
 import { BudgetsType } from "@/types/BudgetType";
 
 
 
 
-export const Budgets = () => {
+const Budgets = () => {
 
 
     const [checked, setChecked] = useState('all')
@@ -111,3 +111,5 @@ export const Budgets = () => {
 
     )
 }
+
+export default Budgets;

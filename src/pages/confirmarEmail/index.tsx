@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { LoginHeader } from "./components/LoginHeader";
+import  LoginHeader  from "./components/LoginHeader";
 import { api } from "@/utils/api";
 import { useSearchParams } from 'next/navigation'
 import Router from "next/router";

@@ -1,17 +1,17 @@
-import { PhotoArea } from "./photoArea";
-import {Address} from "./address"
+import PhotoArea from "./photoArea";
+import Address from "./address"
 
-import { LoginAndSecurity } from "./LoginAndSecurity";
+import LoginAndSecurity from "./LoginAndSecurity";
 import React from "react";
-import { Images } from "./Images";
-import { Services } from "./Services";
-import { SeeProfile } from "./SeeProfile";
-import { Questions } from "./Questions";
-import { LogOut } from "./LogOut";
-import { AboutMe } from "./AboutMe";
-import { Banner } from "./Banner";
+import Images from "./Images";
+import Services from "./Services";
+import SeeProfile from "./SeeProfile";
+import Questions from "./Questions";
+import LogOut from "./LogOut";
+import AboutMe from "./AboutMe";
+import Banner from "./Banner";
 
-export const Profile = () =>{
+const PartnerProfile = () =>{
 
 
     return(
@@ -42,3 +42,5 @@ export const Profile = () =>{
         </>
     );
 }
+
+export default PartnerProfile;

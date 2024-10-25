@@ -23,7 +23,7 @@ type Props = {
 }
 
 
-export const Event = ({event}:Props) => {
+const Event = ({event}:Props) => {
     const [summaryEvent, setSummaryEvent] = useState<EventSummary>()
 
 
@@ -59,3 +59,5 @@ export const Event = ({event}:Props) => {
         </>
     )
 }
+
+export default Event;

@@ -2,7 +2,7 @@ import { PartnerContext } from "@/contexts/PartnerContext";
 import { useContext, useEffect, useState } from "react";
 
 
-export const Welcome = () => {
+const Welcome = () => {
     const { partner } = useContext(PartnerContext);
     const [ name, setName ] = useState('')
     useEffect(() => {
@@ -18,3 +18,5 @@ export const Welcome = () => {
 
 
 }
+
+export default Welcome;

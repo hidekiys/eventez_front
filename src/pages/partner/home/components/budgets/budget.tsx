@@ -12,7 +12,7 @@ import { headers } from "next/headers"
 import { useEffect, useState } from "react"
 import { toast, Toaster } from "sonner"
 import { EventSummary } from "@/types/EventSummaryType"
-import { publicOfEvent } from "@/pages/user/home/event/publicOfEvent"
+import {publicOfEvent} from "@/data/publicOfEvent"
 
 
 
@@ -27,7 +27,7 @@ type Props = {
 
 
 
-export const Budget = ({event,services,status, budgetId ,description}:Props) => {
+const Budget = ({event,services,status, budgetId ,description}:Props) => {
 
 
     const [summary, setSummary] = useState<EventSummary | undefined>();
@@ -237,3 +237,5 @@ export const Budget = ({event,services,status, budgetId ,description}:Props) => 
         </>
     )
 }
+
+export default Budget;

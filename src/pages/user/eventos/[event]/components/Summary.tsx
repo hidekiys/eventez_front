@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
     }
 
 
-export const SumaryEvent = ({numberOfGuests, startTime, endTime, date}: Props) => {
+const SummaryEvent = ({numberOfGuests, startTime, endTime, date}: Props) => {
     const[dateHour, setDateHour] = useState({startTime:`${startTime.slice(0,5)}`, endTime:`${endTime.slice(0,5)}`, date:`${date.slice(8, 10)}/${date.slice(5,7)}/${date.slice(0,4)}`});
     useEffect(() => {
         setDateHour(({startTime:`${startTime.slice(0,5)}`, endTime:`${endTime.slice(0,5)}`, date:`${date.slice(8, 10)}/${date.slice(5,7)}/${date.slice(0,4)}`}))
@@ -33,3 +33,5 @@ export const SumaryEvent = ({numberOfGuests, startTime, endTime, date}: Props) =
 
     );
 }
+
+export default SummaryEvent;

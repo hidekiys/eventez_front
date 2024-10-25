@@ -25,7 +25,7 @@ type Props = {
 
 
 
-export const TodoItem = ({todoItem, todoDescription,todoStatus}:Props) => {
+const TodoItem = ({todoItem, todoDescription,todoStatus}:Props) => {
     const [open, setOpen] = useState(false)
     const router = useRouter()
     const [checked, setChecked] = useState<boolean>()
@@ -86,3 +86,4 @@ export const TodoItem = ({todoItem, todoDescription,todoStatus}:Props) => {
         </>
     )
 }
+export default TodoItem;

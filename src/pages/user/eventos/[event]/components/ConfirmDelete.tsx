@@ -22,7 +22,7 @@ type Props = {
     setNotFound: Dispatch<SetStateAction<boolean>>
 }
 
-export const ConfirmDelete = ({open, setOpen,setNotFound}:Props) => {
+const ConfirmDelete = ({open, setOpen,setNotFound}:Props) => {
   const router = useRouter();
 
   const handleConfirmDelete = () => {
@@ -54,7 +54,7 @@ export const ConfirmDelete = ({open, setOpen,setNotFound}:Props) => {
     </AlertDialog>
   );
 };
-
+export default ConfirmDelete;
 
 
 

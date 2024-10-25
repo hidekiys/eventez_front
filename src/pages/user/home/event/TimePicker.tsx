@@ -15,7 +15,7 @@ type Props = {
 } 
 
 
-export const TimePicker = ({setEventTime, event}:Props) => {
+const TimePicker = ({setEventTime, event}:Props) => {
 
   const handleSetValues = (value: string) => {
     setEventTime({...event, hour:`${value}:00`})
@@ -76,3 +76,5 @@ export const TimePicker = ({setEventTime, event}:Props) => {
   </SelectContent>
 </Select>
 }
+
+export default TimePicker;

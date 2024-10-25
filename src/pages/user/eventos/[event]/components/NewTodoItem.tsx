@@ -21,7 +21,7 @@ import { useState } from "react"
 
 
 
-export const NewTodoItem = () => {
+const NewTodoItem = () => {
     const router = useRouter()
     const [description, setDescription] = useState('');
 
@@ -64,3 +64,5 @@ export const NewTodoItem = () => {
 
     )
 }
+
+export default NewTodoItem;

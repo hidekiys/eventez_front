@@ -7,7 +7,7 @@ import { useEffect } from "react"
 
 
 
-export const EventFinancial = () => {
+const EventFinancial = () => {
 
     const router = useRouter()
     return(
@@ -25,3 +25,5 @@ export const EventFinancial = () => {
         </>
     )
 }
+
+export default EventFinancial;

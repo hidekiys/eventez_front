@@ -1,6 +1,6 @@
 
 import { Badge } from "@/components/ui/badge";
-import { Dispatch, SetStateAction, useContext, useEffect, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 type Props = {
     eventName:string,
@@ -10,9 +10,7 @@ type Props = {
 
 
 
-export const EventName = ({eventName, types, setNotFound}:Props) => {
-    const [open, setOpen] = useState(false);
-
+const EventName = ({eventName, types}:Props) => {
 
     return(
         <>
@@ -30,3 +28,4 @@ export const EventName = ({eventName, types, setNotFound}:Props) => {
 
 
 }
+export default EventName;

@@ -1,7 +1,7 @@
 import { PageConfig } from "@/components/pageConfig/pageConfig";
 import { Header } from "@/components/pageConfig/header";
 import { Navegation } from "@/components/pageConfig/navegation";
-import { Financial } from "./components/Financial";
+import Financial from "./components/Financial";
 
 function Page() {
     return (

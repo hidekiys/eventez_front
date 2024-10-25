@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react"
-import { typesOfServices } from "./typesOfServices"
+import typesOfServices from "../../../data/typesOfServices"
 import { api } from "@/utils/api"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -7,7 +7,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import Link from "next/link";
 import { ServicePageType } from "@/types/ServicePage";
-import { ServiceComponent } from "./serviceComponent";
+import ServiceComponent from "./serviceComponent";
 
 
 type Props = {
@@ -16,7 +16,7 @@ type Props = {
 }
 
 
-export const ServicesContent = ({search,setSearch}:Props) => {
+const ServicesContent = ({search,setSearch}:Props) => {
 
     const[places, setPlaces] = useState<ServicePageType[]>()
     const[famous, setFamous] = useState<ServicePageType[]>()
@@ -154,3 +154,4 @@ export const ServicesContent = ({search,setSearch}:Props) => {
         </>
     )}
 }
+export default ServicesContent;

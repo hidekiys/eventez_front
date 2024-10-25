@@ -1,28 +1,29 @@
-import { Budgets } from "./budgets/budgets"
-import { Events } from "./events/Events"
-import { Notifications } from "./notifications/notifications"
-import { Welcome } from "./Welcome"
+    import  Budgets  from "./budgets/budgets"
+    import  Events  from "./events/Events"
+    import Notifications from "./notifications/notifications"
+    import Welcome from "./Welcome"
 
 
-export const PartnerHome = () => {
+const PartnerHome = () => {
 
 
 
-    return(
-        <>
-        <div className="flex justify-between">
-            <div>
-                <Welcome/>
-                <Budgets/>
-                <Events/>
+        return(
+            <>
+            <div className="flex justify-between">
+                <div>
+                    <Welcome/>
+                    <Budgets/>
+                    <Events/>
+                </div>
+                <div>
+                    <Notifications/>
+                </div>
             </div>
-            <div>
-                <Notifications/>
-            </div>
-        </div>
-            
-        </>
+                
+            </>
 
 
-    )
-}
+        )
+    }
+export default PartnerHome;

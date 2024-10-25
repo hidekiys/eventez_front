@@ -1,8 +1,8 @@
-import { Alert } from "./alert";
+import Alert from "./alert";
 import { alerts } from "@/data/alerts";
 
 
-export const Alerts = () => {
+const Alerts = () => {
    
     return(
         <>
@@ -30,3 +30,4 @@ export const Alerts = () => {
         </>
     );
 }
+export default Alerts;

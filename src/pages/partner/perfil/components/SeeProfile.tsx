@@ -7,7 +7,7 @@ import { PartnerContext } from "@/contexts/PartnerContext";
 
 
 
-export const SeeProfile = () =>{
+const SeeProfile = () =>{
     const partner = useContext(PartnerContext);
 
 
@@ -26,3 +26,5 @@ export const SeeProfile = () =>{
         </>
     )
 }
+
+export default SeeProfile;

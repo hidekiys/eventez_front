@@ -2,7 +2,7 @@
 
 
 
-export const Associate = () =>{
+const Associate = () =>{
 
 
 
@@ -61,3 +61,4 @@ export const Associate = () =>{
         </>
     )
 }
+export default Associate;

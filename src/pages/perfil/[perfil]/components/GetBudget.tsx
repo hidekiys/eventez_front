@@ -5,7 +5,7 @@ import { useRouter } from "next/router"
 import { parseCookies } from "nookies"
 import React from "react"
 import { Dispatch, SetStateAction, useEffect, useState } from "react"
-import { ComboEvents } from "./ComboEvents"
+import ComboEvents from "./ComboEvents"
 import { SelectedType } from "@/types/SelectedEventType"
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { api } from "@/utils/api"
@@ -17,7 +17,7 @@ type Props = {
 }
 
 
-export const GetBudget = ({getServices, setGetServices}:Props) =>{
+const GetBudget = ({getServices, setGetServices}:Props) =>{
     const [selectedEvent, setSelectedEvent] = useState<SelectedType>({name:'',value:''})
     const [login, setLogin] = useState<boolean>(false)
     const router = useRouter()
@@ -168,3 +168,5 @@ export const GetBudget = ({getServices, setGetServices}:Props) =>{
         </>
     )
 }
+
+export default GetBudget;

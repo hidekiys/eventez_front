@@ -29,7 +29,7 @@ import React from "react";
 import { cpf } from 'cpf-cnpj-validator';
 
 
-export const EditProfile = () => {
+const EditProfile = () => {
     const [phone, setPhone] = useState('');
     const [cpfText, setCPFText] = useState('');
     const [validCpf, setValidCpf] = useState(true)
@@ -186,3 +186,5 @@ export const EditProfile = () => {
 
     )
 }
+
+export default EditProfile;

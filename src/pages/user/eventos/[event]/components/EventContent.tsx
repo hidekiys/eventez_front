@@ -2,14 +2,14 @@
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { api } from "@/utils/api";
-import { EventName } from "./EventName";
-import { Address } from "./EventAddress";
-import { EventTodoList } from "./EventTodoList";
-import { EventServices } from "./EventServices";
-import { SumaryEvent } from "./Summary";
-import { EventFinancial } from "./EventFinancial";
-import { Budgets } from "./Budgets";
-import { publicOfEvent } from "@/pages/user/home/event/publicOfEvent";
+import EventName from "./EventName";
+import Address from "./EventAddress";
+import EventTodoList from "./EventTodoList";
+import EventServices from "./EventServices";
+import SummaryEvent from "./Summary";
+import EventFinancial from "./EventFinancial";
+import Budgets from "./Budgets";
+import { publicOfEvent } from "@/data/publicOfEvent";
 
 
 
@@ -58,7 +58,7 @@ const templatePlace = {
 
 const templateTodoList = [{todoItem:0,todoStatus:false, todoDescription:''}]
 
-export const EventContent = () => {
+const EventContent = () => {
     const router = useRouter()
     const [notFound, setNotFound] = useState(false)
     const [event, setEvent] = useState<eventType>();
@@ -107,7 +107,7 @@ export const EventContent = () => {
                   </div>
                 </div>
               <div className="w-1/2 flex flex-col mt-4">
-                  <SumaryEvent numberOfGuests={event?.numberOfGuests || 0} startTime={event?.hour || ''} endTime={event?.endTime || ''} date={event?.date ||''}/>
+                  <SummaryEvent numberOfGuests={event?.numberOfGuests || 0} startTime={event?.hour || ''} endTime={event?.endTime || ''} date={event?.date ||''}/>
                     <Address place={event?.place || templatePlace} id={router.query.event as string}/>
                     <EventFinancial/>
                     <EventTodoList todoList={event?.todoList || templateTodoList}/>
@@ -127,3 +127,5 @@ export const EventContent = () => {
     );
   
 }
+
+export default EventContent;

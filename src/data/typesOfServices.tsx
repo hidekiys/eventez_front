@@ -1,6 +1,6 @@
 import { Armchair, Beer, Camera, Cctv, Coffee, Gem, Hammer, Lightbulb, MapPinHouse, Martini, Music, NotebookPen, PaintBucket, PaintRoller, Sparkles, Speaker } from "lucide-react";
 
-export const typesOfServices = [
+const typesOfServices = [
   {
     name:"Música", 
     image:<Music/>
@@ -62,3 +62,5 @@ export const typesOfServices = [
     image:<Gem />
   },
   ];
+
+  export default typesOfServices;

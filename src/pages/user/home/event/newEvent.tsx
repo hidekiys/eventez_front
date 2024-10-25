@@ -6,25 +6,25 @@ import {
     DialogTitle,
     DialogTrigger,
   } from "@/components/ui/dialog"
-import { DatePicker } from "./DatePicker";
+import DatePicker from "./DatePicker";
 
 import { FormEvent, useState } from "react";
-import { TimePicker } from "./TimePicker";
+import TimePicker from "./TimePicker";
 import { EventsType } from "@/types/EventsType";
 import { api } from "@/utils/api";
 import { Select, SelectContent, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { SelectItem } from "@radix-ui/react-select";
 import { Separator } from "@/components/ui/separator";
-import { ComboboxDemo } from "./ComboTypes";
-import { SelectType } from "./Select";
-import { SelectPublic } from "./SelectPublic";
-import { EndTimePicker } from "./endTimePicker";
+import ComboboxDemo from "./ComboTypes";
+import SelectType from "./Select";
+import SelectPublic from "./SelectPublic";
+import EndTimePicker from "./endTimePicker";
 import Router from "next/router";
 import React from "react";
 
 
   
-export const NewEvent = () => {
+const NewEvent = () => {
     const [status, setStatus] = useState('')
     const [hasCreated, setHasCreated] = useState(false)
     const [hasPlace, setHasPlace] = useState(false)
@@ -479,3 +479,4 @@ export const NewEvent = () => {
         </>
     );
 }
+export default NewEvent;

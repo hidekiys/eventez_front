@@ -1,7 +1,7 @@
 
 import { Logo } from "@/components/pageConfig/logo";
 
-export const LoginHeader = () => {
+const LoginHeader = () => {
     return (
         <>
         <nav className="w-full h-10 shadow-md z-30 shadow-gray-300 bg-white flex justify-between sticky top-0" >
@@ -16,3 +16,5 @@ export const LoginHeader = () => {
         
     );
 }
+
+export default LoginHeader;

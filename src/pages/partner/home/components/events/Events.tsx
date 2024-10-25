@@ -1,6 +1,6 @@
 import { api } from "@/utils/api"
 import { useEffect, useState } from "react"
-import { Event } from "./Event";
+import  Event  from "./Event";
 
 type EventsType = {
     value: number,
@@ -14,7 +14,7 @@ type EventsType = {
 
 
 
-export const Events = () => {
+const Events = () => {
     const [filter, setFilter] = useState<string>('')
     const [events, setEvents] = useState<EventsType>()
     const [showEvents, setShowEvents] = useState<EventsType>()
@@ -56,3 +56,5 @@ export const Events = () => {
         </>
     )
 }
+
+export default Events;

@@ -20,7 +20,7 @@ type Question = {
 }
 
 
-export const Questions = () =>{
+const Questions = () =>{
     const [questions, setQuestions] = useState<Question[]>();
     const [editQuestion, setEditQuestion] = useState<Question>({ask:'',response:''});
 
@@ -194,3 +194,5 @@ export const Questions = () =>{
         </>
     )
 }
+
+export default Questions;

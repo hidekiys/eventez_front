@@ -4,7 +4,7 @@ type Props = {
 }
 
 
-export const Alert = (props: Props) => {
+const Alert = (props: Props) => {
     return(
         <>
             <div className="flex flex-row bg-white mx-6 mt-3 h-16 rounded-xl">
@@ -14,3 +14,5 @@ export const Alert = (props: Props) => {
         </>
     );
 }
+
+export default Alert;

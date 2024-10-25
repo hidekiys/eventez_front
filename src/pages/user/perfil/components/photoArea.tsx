@@ -1,10 +1,10 @@
-import { ProfilePhoto } from "./profilePhoto";
+import ProfilePhoto from "./profilePhoto";
 import {ref, uploadBytes, uploadBytesResumable, getDownloadURL} from 'firebase/storage'
 import React, { useContext, useEffect, useState } from "react";
 import { api } from "@/utils/api";
 import { UserContext } from "@/contexts/UserContext";
 
-export const PhotoArea = () => {
+const PhotoArea = () => {
     const [imgURL, setImageURL] = useState("");
     const user = useContext(UserContext)
     useEffect(()=>{
@@ -57,3 +57,5 @@ export const PhotoArea = () => {
         </>
     );
 }
+
+export default PhotoArea;

@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
-import { Budget } from "./Budget"
+import Budget from "./Budget"
 import { BudgetsType } from "@/types/BudgetType"
 import { api } from "@/utils/api"
 
 
 
 
-export const Budgets = () => {
+const Budgets = () => {
     const [budgets, setBudgets] = useState<BudgetsType[]>()
 
     useEffect(()=>{
@@ -47,3 +47,6 @@ export const Budgets = () => {
         </>
     )
 }
+
+
+export default Budgets;

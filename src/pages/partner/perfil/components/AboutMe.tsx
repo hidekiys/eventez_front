@@ -27,7 +27,7 @@ import { api } from "@/utils/api";
 
 
 
-export const AboutMe = () =>{
+const AboutMe = () =>{
     const [about, setAbout] = useState<string>()
 
 
@@ -83,3 +83,5 @@ export const AboutMe = () =>{
         </>
     )
 }
+
+export default AboutMe;

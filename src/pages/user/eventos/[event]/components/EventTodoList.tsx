@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
-import { NewTodoItem } from "./NewTodoItem"
-import { TodoItem } from "./TodoItem"
+import NewTodoItem from "./NewTodoItem"
+import TodoItem from "./TodoItem"
 import { api } from "@/utils/api"
 
 
@@ -15,7 +15,7 @@ type Props = {
 
 
 
-export const EventTodoList = ({todoList}:Props) => {
+const EventTodoList = ({todoList}:Props) => {
 
     return(
     <div className="w-full h-full mt-3 bg-white rounded-md flex flex-col">
@@ -36,3 +36,5 @@ export const EventTodoList = ({todoList}:Props) => {
     </div>
     )
 }
+
+export default EventTodoList;

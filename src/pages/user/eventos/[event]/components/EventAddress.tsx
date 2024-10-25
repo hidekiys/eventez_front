@@ -45,7 +45,7 @@ type Address = {
 
 
 
-export const Address = ({place, id}:Props) => {
+const Address = ({place, id}:Props) => {
     const [address, setAddress] = useState<Address>({placeName: '',cep:'', state:'', street:'', city:'', neighborhood:'',number:'',complement:''});
     const [pass, setPass] = useState('');
     const [open, setOpen] = useState(false);
@@ -176,3 +176,5 @@ export const Address = ({place, id}:Props) => {
 
     );
 }
+
+export default Address;

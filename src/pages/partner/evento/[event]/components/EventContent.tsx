@@ -2,9 +2,9 @@
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { api } from "@/utils/api";
-import { EventName } from "./EventName";
-import { Address } from "./EventAddress";
-import { SumaryEvent } from "./Summary";
+import  EventName  from "./EventName";
+import  Address  from "./EventAddress";
+import SumaryEvent  from "./Summary";
 import { EventSummary } from "@/types/EventSummaryType";
 import Link from "next/link";
 import { PartnerContext } from "@/contexts/PartnerContext";
@@ -74,7 +74,7 @@ const templatePlace = {
 
 const templateTodoList = [{todoItem:0,todoStatus:false, todoDescription:''}]
 
-export const EventContent = () => {
+const EventContent = () => {
 
   
   type partnerEvent = {
@@ -211,3 +211,6 @@ type Services = {
   
     )
 }
+
+
+export default EventContent;

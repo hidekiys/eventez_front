@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { EventService } from "./EventService";
+import EventService from "./EventService";
 
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
       }]
 }
 
-export const EventServices = ({services}:Props) => {
+const EventServices = ({services}:Props) => {
 
 
     return(
@@ -39,3 +39,5 @@ export const EventServices = ({services}:Props) => {
     
 );
 }
+
+export default EventServices;

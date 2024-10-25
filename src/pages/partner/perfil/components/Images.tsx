@@ -29,7 +29,7 @@ import { Separator } from "@/components/ui/separator";
 import { Toaster } from "@/components/ui/sonner"
 import { toast } from "sonner"
 
-export const Images = () => {
+const Images = () => {
     const [images, setImages] = useState<string[]>()
     const [imgURL, setImageURL] = useState("");
     
@@ -161,3 +161,5 @@ export const Images = () => {
         </>
     )
 }
+
+export default Images;

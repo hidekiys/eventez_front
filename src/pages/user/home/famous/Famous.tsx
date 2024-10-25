@@ -7,7 +7,7 @@ import { ServicePageType } from '@/types/ServicePage';
 import Link from 'next/link';
 
 
-export const Famous = () => {
+const Famous = () => {
 
     const[famous, setFamous] = useState<ServicePageType[]>()
     useEffect(()=>{
@@ -60,3 +60,5 @@ export const Famous = () => {
         </>
     )
 }
+
+export default Famous;

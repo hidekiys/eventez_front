@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 
 
 
-export const LogOut = () =>{
+const LogOut = () =>{
     const router = useRouter()
     const handleLogOut = () => {
         destroyCookie(null, 'eventez.partner.token')
@@ -32,3 +32,4 @@ export const LogOut = () =>{
         </>
     )
 }
+export default LogOut;

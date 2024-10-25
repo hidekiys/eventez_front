@@ -14,9 +14,10 @@ type Notifications = {
         sender:string[],
         updatedAt:string
     
-}[]
+}[];
 
-export const Notifications = () => {
+
+const Notifications = () => {
     const [notifications, setNotifications] = useState<Notifications>()
 
     useEffect(() => {
@@ -65,3 +66,5 @@ export const Notifications = () => {
 
 
 }
+
+export default Notifications;

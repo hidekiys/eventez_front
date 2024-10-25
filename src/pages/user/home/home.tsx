@@ -1,12 +1,12 @@
 import React from "react";
-import { Alerts } from "./alert/alerts";
-import { MyEvents } from "./event/myEvents";
-import { Famous } from "./famous/Famous";
-import { Welcome } from "./welcome";
+import Alerts from "./alert/alerts";
+import MyEvents from "./event/myEvents";
+import Famous from "./famous/Famous";
+import Welcome from "./welcome";
 import { Notifications } from "@/components/notifications/notifications";
 
 
-export const Home = () =>{
+const Home = () =>{
     return(
         <>
         <Welcome/>
@@ -27,3 +27,4 @@ export const Home = () =>{
         </>
     );
 }
+export default Home;

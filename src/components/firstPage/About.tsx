@@ -3,7 +3,7 @@ import { SquarePen, Lock, AudioWaveform, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import {Link as Scroller} from "react-scroll"
 
-export const About = () => {
+const About = () => {
     return (
         <>
         <div className="flex flex-col bg-amber-50 items-center">
@@ -85,3 +85,5 @@ export const About = () => {
 
     );
 }
+
+export default About;

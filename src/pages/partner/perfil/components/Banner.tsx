@@ -29,7 +29,7 @@ import { Separator } from "@/components/ui/separator";
 import { Toaster } from "@/components/ui/sonner"
 import { toast } from "sonner"
 
-export const Banner = () => {
+const Banner = () => {
     const [banner, setBanner] = useState<string>()
     
     useEffect(() => {
@@ -107,3 +107,5 @@ export const Banner = () => {
         </>
     )
 }
+
+export default Banner;

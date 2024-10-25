@@ -2,7 +2,7 @@ import { UserContext } from "@/contexts/UserContext";
 import { useContext, useEffect, useState } from "react";
 
 
-export const Welcome = () => {
+const Welcome = () => {
     const { user } = useContext(UserContext);
     const [ name, setName ] = useState({name:'', lastName:''})
     useEffect(() => {
@@ -18,3 +18,4 @@ export const Welcome = () => {
 
 
 }
+export default Welcome;

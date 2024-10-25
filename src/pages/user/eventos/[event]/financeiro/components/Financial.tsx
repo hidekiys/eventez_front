@@ -1,11 +1,11 @@
 import { FinancialType } from "@/types/FinancialType"
 import { api } from "@/utils/api"
 import { useEffect, useState } from "react"
-import { Receipt } from "./Receipt"
+import Receipt from "./Receipt"
 import { useRouter } from "next/router"
 
 
-export const Financial = () => {
+const Financial = () => {
     const [checked, setChecked] = useState('all')
     const [receipts, setReceipts] = useState<FinancialType[]>()
     const [pendings, setPendings] = useState<FinancialType[]>()
@@ -107,3 +107,5 @@ export const Financial = () => {
 
     )
 }
+
+export default Financial;

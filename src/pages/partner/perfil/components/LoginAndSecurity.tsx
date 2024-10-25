@@ -12,7 +12,7 @@ import { useContext, useEffect, useState } from "react";
 
 
 
-export const LoginAndSecurity = () => {
+const LoginAndSecurity = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
@@ -115,3 +115,5 @@ export const LoginAndSecurity = () => {
         </>
     )
 }
+
+export default LoginAndSecurity;

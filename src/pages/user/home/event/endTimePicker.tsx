@@ -15,7 +15,7 @@ type Props = {
 } 
 
 
-export const EndTimePicker = ({setEventTime, event}:Props) => {
+const EndTimePicker = ({setEventTime, event}:Props) => {
 
   const handleSetValues = (value: string) => {
     setEventTime({...event, endTime:`${value}:00`})
@@ -76,3 +76,4 @@ export const EndTimePicker = ({setEventTime, event}:Props) => {
   </SelectContent>
 </Select>
 }
+export default EndTimePicker;

@@ -12,7 +12,7 @@ type Props = {
 }
 
 
-export const ProfileAsks = ({questions}:Props) => {
+const ProfileAsks = ({questions}:Props) => {
 
     const [open, setOpen] = useState<boolean[]>([false])
 
@@ -51,3 +51,4 @@ export const ProfileAsks = ({questions}:Props) => {
 
     )
 }
+export default ProfileAsks;

@@ -7,7 +7,7 @@ type Props = {
     id:string
 }
 
-export const EventCard = (props: Props) => {
+const EventCard = (props: Props) => {
     return(
         <>
         <Link href={`/user/eventos/${props.id}`}>
@@ -27,3 +27,5 @@ export const EventCard = (props: Props) => {
         </>
     );
 }
+
+export default EventCard;

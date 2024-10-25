@@ -1,14 +1,14 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { LucideX } from "lucide-react";
-import { ComboboxPublic } from "./ComboPublic";
+import ComboboxPublic from "./ComboPublic";
 import { EventsType } from "@/types/EventsType";
 
 type Props = {
     event: EventsType,
     setEvent:Dispatch<SetStateAction<EventsType>>
 }
-export const SelectPublic = ({event, setEvent}:Props) => {
+const SelectPublic = ({event, setEvent}:Props) => {
     const [value, setValue] = useState<string[]>([])
     const [selected, setSelected] = useState<string[]>([])
     
@@ -43,3 +43,5 @@ export const SelectPublic = ({event, setEvent}:Props) => {
     );
 
 }
+
+export default SelectPublic;

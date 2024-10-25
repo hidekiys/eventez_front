@@ -10,7 +10,7 @@ type Props = {
     receipt: FinancialType
 }
 
-export const Receipt = ({receipt}:Props) => {
+const Receipt = ({receipt}:Props) => {
     const [summary, setSummary] = useState<EventSummary | undefined>();
     const [partnerName, setPartnerName] = useState('')
     const router = useRouter()
@@ -52,3 +52,5 @@ export const Receipt = ({receipt}:Props) => {
         </>
     )
 }
+
+export default Receipt;

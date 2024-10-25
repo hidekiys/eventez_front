@@ -9,7 +9,7 @@ type Props = {
     receipt: FinancialType
 }
 
-export const Receipt = ({receipt}:Props) => {
+const Receipt = ({receipt}:Props) => {
     const [summary, setSummary] = useState<EventSummary | undefined>();
     useEffect(()=>{
         api.get("/getEventSummary", {headers:{eventid:receipt.event}}).then((response)=> {
@@ -42,3 +42,5 @@ export const Receipt = ({receipt}:Props) => {
         </>
     )
 }
+
+export default Receipt;

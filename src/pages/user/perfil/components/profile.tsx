@@ -1,11 +1,11 @@
-import { PhotoArea } from "./photoArea";
-import {Address} from "./address"
+import PhotoArea from "./photoArea";
+import Address from "./address"
 
-import { EditProfile } from "../EditProfile";
-import { LoginAndSecurity } from "./LoginAndSecurity";
-import { LogOut } from "./LogOut";
+import EditProfile from "../EditProfile";
+import LoginAndSecurity from "./LoginAndSecurity";
+import LogOut from "./LogOut";
 
-export const Profile = () =>{
+const Profile = () =>{
 
 
     return(
@@ -22,3 +22,5 @@ export const Profile = () =>{
         </>
     );
 }
+
+export default Profile;

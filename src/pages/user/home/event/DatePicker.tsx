@@ -21,7 +21,7 @@ type Props = {
 
 
 
-export function DatePicker({setEventDate, event}:Props) {
+function DatePicker({setEventDate, event}:Props) {
   function adicionaZero(numero:number){
     if (numero <= 9) 
         return "0" + numero;
@@ -73,3 +73,4 @@ export function DatePicker({setEventDate, event}:Props) {
     </Dialog>
   )
 }
+export default DatePicker;

@@ -23,7 +23,7 @@ type Props = {
 
 
 
-export const ProfileServices = ({setGetServices, getServices, offerServices}:Props) => {
+const ProfileServices = ({setGetServices, getServices, offerServices}:Props) => {
     const [login, setLogin] = useState<boolean>(false)
 
     const handleService = (service:string) => {
@@ -81,3 +81,5 @@ export const ProfileServices = ({setGetServices, getServices, offerServices}:Pro
         </>
     )
 }
+
+export default ProfileServices;

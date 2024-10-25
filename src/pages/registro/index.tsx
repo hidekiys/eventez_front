@@ -1,5 +1,5 @@
-import { About } from "@/components/firstPage/About";
-import { LoginHeader } from "./components/LoginHeader";
+import  About  from "@/components/firstPage/About";
+import LoginHeader from "./components/LoginHeader";
 import Link from "next/link";
 import { useForm } from 'react-hook-form';
 import { api } from "@/utils/api";

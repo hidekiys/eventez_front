@@ -1,9 +1,9 @@
-import { ProfilePhoto } from "./profilePhoto";
+import ProfilePhoto from "./profilePhoto";
 import React, { useContext, useEffect, useState } from "react";
 import { api } from "@/utils/api";
 import { PartnerContext } from "@/contexts/PartnerContext";
 
-export const PhotoArea = () => {
+const PhotoArea = () => {
     const [imgURL, setImageURL] = useState("");
     const partner = useContext(PartnerContext)
     useEffect(()=>{
@@ -56,3 +56,5 @@ export const PhotoArea = () => {
         </>
     );
 }
+
+export default PhotoArea;

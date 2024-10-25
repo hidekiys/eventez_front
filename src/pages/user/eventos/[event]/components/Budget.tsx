@@ -10,7 +10,7 @@ type Props = {
 }
 
 
-export const Budget = ({budget}:Props) => {
+const Budget = ({budget}:Props) => {
 
     const [step, setStep] = useState(0)
     const router = useRouter()
@@ -208,3 +208,5 @@ export const Budget = ({budget}:Props) => {
         </>
     );
 }
+
+export default Budget;

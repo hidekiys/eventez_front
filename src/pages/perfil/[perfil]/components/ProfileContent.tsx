@@ -1,12 +1,12 @@
 import { Separator } from "@/components/ui/separator"
-import { ProfileBanner } from "./ProfileBanner"
-import { ProfileImages } from "./ProfileImages"
-import { GetBudget } from "./GetBudget"
-import { ProfileServices } from "./ProfileServices"
+import ProfileBanner from "./ProfileBanner"
+import ProfileImages from "./ProfileImages"
+import GetBudget from "./GetBudget"
+import ProfileServices from "./ProfileServices"
 import { useEffect, useState } from "react"
 import { api } from "@/utils/api"
 import { useRouter } from "next/router"
-import { ProfileAsks } from "./ProfileAsks"
+import ProfileAsks from "./ProfileAsks"
 import React from "react"
 import ProfileMaps from "./Map"
 
@@ -45,7 +45,7 @@ type PartnerPageType = {
     banner?:string,
 }
 
-export const ProfileContent = () =>{
+const ProfileContent = () =>{
     const router = useRouter()
     const [getServices, setGetServices] = useState<string[]>([''])
     const [partnerPage, setPartnerPage] = useState<PartnerPageType>({name:'Nome',
@@ -160,3 +160,5 @@ export const ProfileContent = () =>{
 
     )
 }
+
+export default ProfileContent;

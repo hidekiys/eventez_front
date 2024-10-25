@@ -7,7 +7,6 @@ import {   Sheet,
     SheetHeader,
     SheetTitle,
     SheetTrigger, } from "@/components/ui/sheet";
-import {TypeAddress} from "@/types/TypeAddress"
 import { api } from "@/utils/api";
 import { KeyboardEvent, useEffect, useRef, useState } from "react";
 
@@ -26,7 +25,7 @@ type Props = {
     id:string
 }
 
-type Address = {
+type TypeAddress = {
     placeName: string,cep:string, state:string, street:string, city:string, neighborhood:string,number:string,complement:string
 }
 
@@ -35,7 +34,7 @@ type Address = {
 
 
 
-export const Address = ({place, id}:Props) => {
+const Address = ({place, id}:Props) => {
 
     return(
         <>
@@ -56,3 +55,4 @@ export const Address = ({place, id}:Props) => {
 
     );
 }
+export default Address;

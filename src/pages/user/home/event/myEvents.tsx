@@ -1,7 +1,7 @@
 
-import { EventCard } from "./eventCard";
+import EventCard from "./eventCard";
 import React, { useEffect, useState } from 'react';
-import { NewEvent } from './newEvent';
+import NewEvent from './newEvent';
 import {
     Carousel,
     CarouselContent,
@@ -14,7 +14,7 @@ import { any } from "zod";
 import { useRouter } from "next/router";
 
 
-export const MyEvents = () => {
+const MyEvents = () => {
     const router = useRouter()
     const [ events, setEvents ] = useState<Event>([{name: 'Carregando eventos', date:'00/00/0000', _id:'', status:''}])
 
@@ -79,3 +79,4 @@ export const MyEvents = () => {
         </>
     );
 }
+export default MyEvents;

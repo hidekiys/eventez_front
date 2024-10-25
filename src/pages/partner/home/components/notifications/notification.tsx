@@ -17,7 +17,7 @@ type Props = {
 }
 }
 
-export const Notification = ({data}: Props) => {
+const Notification = ({data}: Props) => {
 
     
 
@@ -75,3 +75,4 @@ export const Notification = ({data}: Props) => {
 
     )
 }
+export default Notification;

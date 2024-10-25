@@ -5,7 +5,7 @@ type Props = {
     name: string;
 }
 
-export const ProfilePhoto  = (props: Props) => {
+const ProfilePhoto  = (props: Props) => {
     let url:string =  '';
     if (props.url && props.url != ''){url = props.url}
     else {url = "/perfilEz.png"}
@@ -16,3 +16,5 @@ export const ProfilePhoto  = (props: Props) => {
         </>
     );
 }
+
+export default ProfilePhoto;

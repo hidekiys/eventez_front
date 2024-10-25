@@ -15,7 +15,7 @@ type Props = {
 }
 
 
-export const EventService = ({service}:Props) => {
+const EventService = ({service}:Props) => {
     const[partner, setPartner] = useState('')
 
     useEffect(()=>{
@@ -89,3 +89,5 @@ export const EventService = ({service}:Props) => {
         </>
     )
 }
+
+export default EventService;

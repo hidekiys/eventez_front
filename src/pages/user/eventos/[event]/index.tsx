@@ -1,5 +1,5 @@
 import { PageConfig } from "@/components/pageConfig/pageConfig";
-import { EventContent } from "./components/EventContent";
+import EventContent from "./components/EventContent";
 import { Header } from "@/components/pageConfig/header";
 import { Navegation } from "@/components/pageConfig/navegation";
 

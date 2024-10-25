@@ -1,6 +1,6 @@
 import { Header } from "@/components/pageConfig/header";
 import React, { useState } from "react";
-import { ServicesContent } from "./Components/servicesContent";
+import ServicesContent from "./Components/servicesContent";
 
 function Page() {
   const[search, setSearch] = useState<string>('')

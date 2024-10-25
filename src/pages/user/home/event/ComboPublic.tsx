@@ -16,7 +16,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { publicOfEvent } from "./publicOfEvent"
+import { publicOfEvent } from "../../../../data/publicOfEvent"
  
 type Props = {
   setValue: React.Dispatch<React.SetStateAction<string[]>>,
@@ -25,7 +25,7 @@ type Props = {
   selected: string[]
 }
  
-export function ComboboxPublic({value, setValue, selected, setSelected}:Props) {
+function ComboboxPublic({value, setValue, selected, setSelected}:Props) {
   const [open, setOpen] = React.useState(false)
  
   return (
@@ -67,3 +67,5 @@ export function ComboboxPublic({value, setValue, selected, setSelected}:Props) {
     </Popover>
   )
 }
+
+export default ComboboxPublic;

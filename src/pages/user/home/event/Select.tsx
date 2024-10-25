@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { ComboboxDemo } from "./ComboTypes";
+import ComboboxDemo from "./ComboTypes";
 import { Badge } from "@/components/ui/badge";
 import { LucideX } from "lucide-react";
 import { EventsType } from "@/types/EventsType";
@@ -9,7 +9,7 @@ type Props = {
     event: EventsType,
     setEvent:Dispatch<SetStateAction<EventsType>>
 }
-export const SelectType = ({event, setEvent}:Props) => {
+const SelectType = ({event, setEvent}:Props) => {
     const [value, setValue] = useState<string[]>([])
     const [selected, setSelected] = useState<string[]>([])
     
@@ -44,3 +44,5 @@ export const SelectType = ({event, setEvent}:Props) => {
     );
 
 }
+
+export default SelectType;
