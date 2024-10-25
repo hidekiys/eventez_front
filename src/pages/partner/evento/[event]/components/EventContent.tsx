@@ -2,7 +2,7 @@
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { api } from "@/utils/api";
-import  EventName  from "./EventName";
+import EventName from "./EventName";
 import  Address  from "./EventAddress";
 import SumaryEvent  from "./Summary";
 import { EventSummary } from "@/types/EventSummaryType";

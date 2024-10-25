@@ -5,6 +5,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import React from 'react';
+import { Skeleton } from '@/components/ui/skeleton';
 
 type Props = {
     images:string[]
@@ -15,6 +16,14 @@ const ProfileImages = ({images}:Props    ) => {
         const stylesheet = document.styleSheets[0];
         stylesheet.insertRule(".swiper-pagination-bullet-active { background: #f24f13 !important;}", 0);   
       }, []);
+      if(!images){
+        return (
+            <>
+                <Skeleton className="w-[100px] h-[20px] rounded-full" />
+            
+            </>
+        )
+      }
     return(
     <>
         <Swiper

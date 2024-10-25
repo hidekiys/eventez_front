@@ -8,6 +8,7 @@ import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 import { get } from 'http';
 import { parseCookies } from 'nookies';
+import { Skeleton } from '@/components/ui/skeleton';
 
 
 
@@ -36,7 +37,11 @@ const ProfileServices = ({setGetServices, getServices, offerServices}:Props) => 
         }
 
     },[])
-
+    if(!offerServices){
+        return (
+            <Skeleton className="w-[100px] h-[20px] rounded-full" />
+        )
+    }
     return(
         <>
         <Swiper

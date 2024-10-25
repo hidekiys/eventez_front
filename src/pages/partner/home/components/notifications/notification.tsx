@@ -1,6 +1,6 @@
 
 import { CheckCheck, CircleDollarSign, Mails, MessageCircle } from "lucide-react"
-
+import { Skeleton } from "@/components/ui/skeleton"
 
 
 
@@ -19,7 +19,14 @@ type Props = {
 
 const Notification = ({data}: Props) => {
 
-    
+    if (!data){
+        return (
+            <div className="h-12 rounded-2xl bg-gray-100 w-[90%] hover:bg-gray-300 transition-all mt-3 items-center text-sm">
+                <Skeleton className="w-[100px] h-[20px] rounded-full" />
+
+            </div>
+        )
+    }
 
     return(
         <>

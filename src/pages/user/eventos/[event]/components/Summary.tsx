@@ -1,3 +1,4 @@
+import { Skeleton } from "@/components/ui/skeleton";
 import { useEffect, useState } from "react";
 
 
@@ -11,6 +12,11 @@ import { useEffect, useState } from "react";
 
 
 const SummaryEvent = ({numberOfGuests, startTime, endTime, date}: Props) => {
+    if(!numberOfGuests || !startTime || !endTime || !date) {
+        return (
+            <Skeleton className="w-[100px] h-[20px] rounded-full" />
+        )
+    }
     const[dateHour, setDateHour] = useState({startTime:`${startTime.slice(0,5)}`, endTime:`${endTime.slice(0,5)}`, date:`${date.slice(8, 10)}/${date.slice(5,7)}/${date.slice(0,4)}`});
     useEffect(() => {
         setDateHour(({startTime:`${startTime.slice(0,5)}`, endTime:`${endTime.slice(0,5)}`, date:`${date.slice(8, 10)}/${date.slice(5,7)}/${date.slice(0,4)}`}))

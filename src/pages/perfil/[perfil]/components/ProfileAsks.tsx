@@ -1,3 +1,4 @@
+import { Skeleton } from "@/components/ui/skeleton"
 import { Separator } from "@radix-ui/react-select"
 import { ChevronDown } from "lucide-react"
 import React from "react"
@@ -26,7 +27,13 @@ const ProfileAsks = ({questions}:Props) => {
         }
         
     }
-
+    if(!questions){
+        return (
+            <div className="border rounded-xl flex flex-col h-fit w-full mt-3 mb-10">
+                <Skeleton className="w-[100px] h-[20px] rounded-full" />
+            </div>
+        )
+    }
     return(
         <>
         <div className="border rounded-xl flex flex-col h-fit w-full mt-3 mb-10">

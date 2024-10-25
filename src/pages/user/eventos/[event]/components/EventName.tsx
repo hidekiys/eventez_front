@@ -11,6 +11,7 @@ import {
     SheetTrigger,
   } from "@/components/ui/sheet"
 import ConfirmDelete from "./ConfirmDelete";
+import { Skeleton } from "@/components/ui/skeleton";
 type Props = {
     eventName:string,
     types: string[],
@@ -22,7 +23,13 @@ type Props = {
 const EventName = ({eventName, types, setNotFound}:Props) => {
     const [open, setOpen] = useState(false);
 
-
+    if(!eventName){
+        return(
+            <div className="text-2xl flex flex-col font-normal max-w-52 mt-0 ml-10">
+                <Skeleton className="w-[100px] h-[20px] rounded-full" />
+            </div>
+        )
+    }
     return(
         <>
 

@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import NewTodoItem from "./NewTodoItem"
 import TodoItem from "./TodoItem"
 import { api } from "@/utils/api"
+import { Skeleton } from "@/components/ui/skeleton"
 
 
 type Props = {
@@ -16,7 +17,13 @@ type Props = {
 
 
 const EventTodoList = ({todoList}:Props) => {
-
+    if(!todoList){
+        return(
+            <div className="w-full h-full mt-3 bg-white rounded-md flex flex-col">
+                <Skeleton className="w-[100px] h-[20px] rounded-full" />
+            </div>
+        )
+    }
     return(
     <div className="w-full h-full mt-3 bg-white rounded-md flex flex-col">
 

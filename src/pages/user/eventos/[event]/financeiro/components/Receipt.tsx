@@ -1,3 +1,4 @@
+import { Skeleton } from "@/components/ui/skeleton"
 import { EventSummary } from "@/types/EventSummaryType"
 import { FinancialType } from "@/types/FinancialType"
 import { api } from "@/utils/api"
@@ -11,6 +12,13 @@ type Props = {
 }
 
 const Receipt = ({receipt}:Props) => {
+    if(!receipt){
+        return (
+            <div className="w-full rounded-xl h-10 bg-white grid grid-cols-12 text-base text-nowrap text-start">
+                <Skeleton className="w-[100px] h-[20px] rounded-full" />
+            </div>
+        )
+    }
     const [summary, setSummary] = useState<EventSummary | undefined>();
     const [partnerName, setPartnerName] = useState('')
     const router = useRouter()

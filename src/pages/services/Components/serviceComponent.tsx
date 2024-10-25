@@ -1,4 +1,5 @@
 import { Badge } from "@/components/ui/badge"
+import { Skeleton } from "@/components/ui/skeleton"
 import { ServicePageType } from "@/types/ServicePage"
 import Link from "next/link"
 
@@ -9,7 +10,13 @@ type Props = {
 
 const ServiceComponent = ({service}:Props) => {
 
-
+    if(!service){
+        return (
+            <div className="flex w-[32%] bg-white rounded-xl hover:scale-95 transition-all hover:cursor-pointer">
+                <Skeleton className="w-[100px] h-[20px] rounded-full" />
+            </div>
+        )
+    }
 
     return (
         <>

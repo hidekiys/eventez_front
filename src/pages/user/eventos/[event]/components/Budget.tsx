@@ -1,4 +1,5 @@
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Skeleton } from "@/components/ui/skeleton";
 import { BudgetsType } from "@/types/BudgetType";
 import { api } from "@/utils/api";
 import { useRouter } from "next/router";
@@ -11,7 +12,13 @@ type Props = {
 
 
 const Budget = ({budget}:Props) => {
-
+    if(!budget){
+        return (
+            <div className={" pt-2 duration-300 w-full bg-white rounded-xl px-3 py-2 flex justify-between hover:bg-gray-100 hover:cursor-pointer"}>
+                <Skeleton className="w-[100px] h-[20px] rounded-full" />
+            </div>
+        )
+    }
     const [step, setStep] = useState(0)
     const router = useRouter()
     const[qrCode, setQrCode] = useState("")

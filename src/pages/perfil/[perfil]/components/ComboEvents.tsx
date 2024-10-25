@@ -8,6 +8,7 @@ import { ChevronsUpDown } from "lucide-react";
 import React, { Dispatch, SetStateAction, useContext, useEffect, useState } from "react"
 import { Event } from "@/types/Event";
 import { SelectedType } from "@/types/SelectedEventType";
+import { Skeleton } from "@/components/ui/skeleton";
 
 
 type Props = {
@@ -30,7 +31,13 @@ const ComboEvents = ({setSelectedEvent, selectedEvent}:Props) => {
             setEvents(updateEvents as Event)
         })
     })
-    
+    if(!selectedEvent){
+      return (
+        <>
+          <Skeleton className="w-[100px] h-[20px] rounded-full" />
+        </>
+      )
+    }
 
     return(
         <>

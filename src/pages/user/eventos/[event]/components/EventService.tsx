@@ -1,4 +1,5 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription, DialogClose } from "@/components/ui/dialog"
+import { Skeleton } from "@/components/ui/skeleton"
 import { api } from "@/utils/api"
 import Link from "next/link"
 import { useEffect, useState } from "react"
@@ -17,7 +18,13 @@ type Props = {
 
 const EventService = ({service}:Props) => {
     const[partner, setPartner] = useState('')
-
+    if(!service){
+        return (
+            <div className={"h-[6vh] min-h-fit py-2 duration-300 w-full bg-white rounded-xl flex flex-col hover:bg-gray-100 hover:cursor-pointer"}>
+                <Skeleton className="w-[100px] h-[20px] rounded-full" />
+            </div>
+        )
+    }
     useEffect(()=>{
         api.get('/getPartnerSummary', {headers:{partnerid:service.partnerId}}).then((res)=>{
             setPartner(res.data.partnerName)
