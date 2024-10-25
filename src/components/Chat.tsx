@@ -23,7 +23,7 @@ type Props = {
     chatName:string | string[] | undefined
     userid:string
 }
-const host = 'http://localhost:3001'
+const host = 'http://18.231.220.81:3001'
 const socket = io(host);
 
 export const ChatContent = ({chat,chatName, userid}:Props) =>{
