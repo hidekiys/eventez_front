@@ -9,6 +9,8 @@ export function middleware(request: NextRequest) {
   const isUserPage = request.nextUrl.pathname.startsWith('/user')
   const isPartnerPage = request.nextUrl.pathname.startsWith('/partner')
 
+
+  if(request.nextUrl.pathname === '/') return NextResponse.redirect(new URL ('/login', request.url))
   if(!user && !partner) {
     if(isLoginPage) {
         return NextResponse.next();
@@ -34,5 +36,5 @@ export function middleware(request: NextRequest) {
 
 }
 export const config = {
-  matcher: ['/login/', '/user/:path*', '/partner/:path*'],
+  matcher: ['/login/', '/user/:path*', '/partner/:path*', '/'],
 }
