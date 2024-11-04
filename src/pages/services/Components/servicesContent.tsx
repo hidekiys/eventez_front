@@ -83,11 +83,14 @@ const ServicesContent = ({search,setSearch}:Props) => {
                                             "/>
                                         </div>
                                         <h1 className="fixed bottom-12 group-hover:-translate-y-20 transition-all
-                                        group-hover:text-2xl text-xl
-                                        left-5 z-50 text-white">{key.name}</h1>
+                                        group-hover:text-2xl text-xl text-white drop-shadow-2xl group-hover:text-principal-100 
+                                        stroke-black group-hover:font-bold
+                                        left-5 z-50">{key.name}</h1>
                                         <p className="fixed bottom-6 group-hover:-translate-y-20 transition-all
                                         text-sm
-                                        left-5 z-50 text-white">{key.local.city}, {key.local.state} | {key.local.neighborhood}</p>
+                                        left-5 z-50 text-white drop-shadow-2xl group-hover:text-principal-100 stroke-black
+                                        group-hover:font-bold shadow-white
+                                        ">{key.local.city}, {key.local.state} | {key.local.neighborhood}</p>
                                     </Link>
                                 </SwiperSlide>
                             

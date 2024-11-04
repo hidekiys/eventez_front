@@ -7,7 +7,7 @@ const { 'eventez.partner.token': partnerToken } = parseCookies()
 const token = (userToken) ? userToken : partnerToken;
 
 export const api = axios.create({
-    baseURL: 'https://api.eventez.com.br',
+    baseURL: 'http://localhost:3001',
     timeout: 50000
 });
 if(token){

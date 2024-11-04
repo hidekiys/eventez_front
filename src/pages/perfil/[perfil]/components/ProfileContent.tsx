@@ -9,6 +9,9 @@ import { useRouter } from "next/router"
 import ProfileAsks from "./ProfileAsks"
 import React from "react"
 import ProfileMaps from "./Map"
+import ProfileAddReviews from "./ProfileAddReview"
+import ProfileReviews from "./ProfileReviews"
+import { Star } from "lucide-react"
 
 type PartnerPageType = {
     name:string,
@@ -44,10 +47,24 @@ type PartnerPageType = {
     }[],
     banner?:string,
 }
+type ReviewType = {
+    reviewId:String,
+    writer: {
+        name:string,
+        avatar:string
+    }
+    text:{
+        title:string,
+        description:string
+    }
+    rate:number,
+    createdAt:string,
+}
 
 const ProfileContent = () =>{
     const router = useRouter()
     const [getServices, setGetServices] = useState<string[]>([''])
+    const [reviews, setReviews] = useState<ReviewType[]>();
     const [partnerPage, setPartnerPage] = useState<PartnerPageType>({name:'Nome',
         offerServices:[{
             name:'serviço',
@@ -82,7 +99,14 @@ const ProfileContent = () =>{
         }
     },[router.isReady])
 
+    useEffect(()=>{
+        if(router.isReady){
+            api.get(`/getReviews/${router.query.perfil}`).then((response)=>{
+                setReviews(response.data)
 
+            })
+        }
+    },[router.isReady])
 
 
 
@@ -100,7 +124,17 @@ const ProfileContent = () =>{
                 <div className="flex flex-col z-10">
                     <div className="flex items-center align-middle gap-2">
                         <h1 className="text-2xl">{partnerPage.name}</h1>
-                        <p className="text-sm mt-1 text-principal-300">{partnerPage.reviews && partnerPage.reviews?.length > 0 ? `${partnerPage.rate} • ${partnerPage.reviews?.length} opiniões` : "Novo na plataforma"}</p>
+                        <div className="flex items-center gap-1">
+                            {reviews && reviews.length > 0 && <div className="mt-1 flex">
+                                <Star size={12} className={`${partnerPage.rate && partnerPage.rate <=0 ? "stroke-black" : "fill-principal-200 stroke-none"}`}/>
+                                <Star size={12} className={`${partnerPage.rate && partnerPage.rate >= 2 ? "fill-principal-200 stroke-none":"stroke-black"}`}/>
+                                <Star size={12} className={`${partnerPage.rate && partnerPage.rate >= 3 ? "fill-principal-200 stroke-none":"stroke-black"}`}/>
+                                <Star size={12} className={`${partnerPage.rate && partnerPage.rate >= 4 ? "fill-principal-200 stroke-none":"stroke-black"}`}/>
+                                <Star size={12} className={`${partnerPage.rate && partnerPage.rate >= 5 ? "fill-principal-200 stroke-none":"stroke-black"}`}/>
+                            </div>}
+                            
+                            <p className={`text-sm mt-1 ${!reviews || reviews && reviews.length <= 0 && "text-principal-200"}`}>{reviews && reviews.length>0 ? `• ${reviews.length} ${reviews.length>1 ? "avaliações" : "avaliação"}` : "Novo na plataforma"}</p>
+                        </div>
                     </div>
                     <p className="text-xs">{`${partnerPage.local.city}, ${partnerPage.local.state}`}</p>
                     
@@ -130,7 +164,11 @@ const ProfileContent = () =>{
                     </div>
                     <Separator/>
                     <div>
-                        <h1 className="text-2xl">Opiniões</h1>
+                        <div className="flex gap-2 items-center">
+                            <h1 className="text-2xl">Avaliações</h1>
+                            <ProfileAddReviews/>
+                        </div>
+                        <ProfileReviews/>
 
                     </div>
                     <Separator/>
