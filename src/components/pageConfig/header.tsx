@@ -1,6 +1,7 @@
 import {Logo} from "@/components/pageConfig/logo"
 import { PartnerContext } from "@/contexts/PartnerContext"
 import { UserContext } from "@/contexts/UserContext"
+import { Avatar } from "@mui/material"
 import { Search } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -70,13 +71,21 @@ export const Header = ({search,setSearch}:Props) => {
 
                     </Link>
                 }
-                {login && user.user.url_avatar != '' ?
+                {login && user.user.url_avatar != '' && user.user.url_avatar != undefined ?
                     <Link href={"/user/home"}>
                         <img src={user.user.url_avatar} className="h-8 w-8 rounded-full mr-2"/>
                     </Link>:
-                    login && partner.partner.url_avatar != '' &&
+                    login && partner.partner.url_avatar != '' && partner.partner.url_avatar != undefined ?
                     <Link href={"/partner/home"}>
                         <img src={partner.partner.url_avatar} className="h-8 w-8 rounded-full mr-2"/>
+                    </Link>
+                    : login && user.user.url_avatar == undefined ?
+                    <Link href={"/user/home"}>
+                        <Avatar className="h-8 w-8 rounded-full mr-2"/>
+                    </Link>
+                    : login && partner.partner.url_avatar == undefined &&
+                    <Link href={"/partner/home"}>
+                        <Avatar className="h-8 w-8 rounded-full mr-2"/>
                     </Link>
                 }
             </div>

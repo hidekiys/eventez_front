@@ -56,6 +56,14 @@ const MyEvents = () => {
             <div className="ml-3 mt-5 w-full overflow-hidden flex flex-row align-middle justify-start">
             <Carousel className='h-60 w-full max-w-screen'>
                 <CarouselContent>
+                    {events.length <= 0 &&
+                    <div className="text-xl h-full bg-white ml-5 px-4 py-2 rounded-xl">
+                        Você ainda não tem eventos <div className="text-lg
+                        text-principal-300 flex justify-center
+                        "><NewEvent/></div>
+                    </div>
+                    
+                    }
                 {events.map(myEvents =>
                             <CarouselItem className="basis-4/13" key={myEvents.name}>
                                 <EventCard

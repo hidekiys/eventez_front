@@ -6,7 +6,7 @@ const Welcome = () => {
     const { user } = useContext(UserContext);
     const [ name, setName ] = useState({name:'', lastName:''})
     useEffect(() => {
-        if (user.name.lastName) {setName({name: user?.name.firstName, lastName:user?.name.lastName})} else { setName({...name})}
+        if (user.name.lastName) {setName({name: user?.name.firstName, lastName:user?.name.lastName})} else { setName({...name, name:user?.name.firstName})}
     }, [user])
 
     return(

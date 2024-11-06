@@ -60,7 +60,7 @@ const PartnerFinancial = () => {
                     </div>
                     
                 </div>
-                    <div className="flex flex-col w-full">
+                    <div className="flex flex-col w-full gap-2">
                     <div className="w-full  grid grid-cols-12 text-base text-nowrap text-start mb-3">
                         <div className="col-span-2 flex items-center ml-5">
                             Data

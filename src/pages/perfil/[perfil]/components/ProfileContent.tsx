@@ -125,7 +125,7 @@ const ProfileContent = () =>{
                     <div className="flex items-center align-middle gap-2">
                         <h1 className="text-2xl">{partnerPage.name}</h1>
                         <div className="flex items-center gap-1">
-                            {reviews && reviews.length > 0 && <div className="mt-1 flex">
+                            {reviews && reviews.length > 0 && <div className="mt-1 flex"> {partnerPage.rate}
                                 <Star size={12} className={`${partnerPage.rate && partnerPage.rate <=0 ? "stroke-black" : "fill-principal-200 stroke-none"}`}/>
                                 <Star size={12} className={`${partnerPage.rate && partnerPage.rate >= 2 ? "fill-principal-200 stroke-none":"stroke-black"}`}/>
                                 <Star size={12} className={`${partnerPage.rate && partnerPage.rate >= 3 ? "fill-principal-200 stroke-none":"stroke-black"}`}/>
